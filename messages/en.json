@@ -327,5 +327,14 @@
       "pendingHint": "You have {count} messages awaiting a reply.",
       "allClearHint": "All messages handled — nicely done!"
     }
+  },
+  "pwa": {
+    "title": "Keep us close",
+    "subtitle": "Install the app in one tap — lectures & Torah always with you.",
+    "cta": "Install the app",
+    "ctaUnavailable": "Add to Home Screen from your browser menu",
+    "dismiss": "Dismiss",
+    "iosStep1": "To install: tap",
+    "iosStep2": "then ‘Add to Home Screen’"
   }
 }

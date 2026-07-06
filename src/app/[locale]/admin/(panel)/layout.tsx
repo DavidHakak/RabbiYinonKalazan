@@ -18,7 +18,7 @@ export default async function AdminPanelLayout({
   // Auth guard: not signed in → login; signed in but not an admin → no access.
   const user = await getSessionUser();
   if (!user) redirect(`/${locale}/admin/login`);
-  if (!isAdminUser(user)) return <NoAccess />;
+  if (!(await isAdminUser(user))) return <NoAccess />;
 
   return (
     <div className="flex min-h-dvh flex-col bg-cream-100 md:flex-row">

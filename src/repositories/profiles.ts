@@ -36,6 +36,18 @@ export async function getProfileByEmail(email: string): Promise<Profile | null> 
   return rows[0] ?? null;
 }
 
+export async function getProfileByAuthUserId(
+  authUserId: string,
+): Promise<Profile | null> {
+  if (!db) return null;
+  const rows = await db
+    .select()
+    .from(profiles)
+    .where(eq(profiles.authUserId, authUserId))
+    .limit(1);
+  return rows[0] ?? null;
+}
+
 export async function createProfile(data: NewProfile): Promise<Profile> {
   const [row] = await requireDb().insert(profiles).values(data).returning();
   return row;

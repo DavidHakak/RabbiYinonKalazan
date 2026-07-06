@@ -29,6 +29,20 @@
       "when": 1783366149663,
       "tag": "0003_dizzy_angel",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1783371535412,
+      "tag": "0004_pretty_green_goblin",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1783371682594,
+      "tag": "0005_profile_on_signup",
+      "breakpoints": true
     }
   ]
 }

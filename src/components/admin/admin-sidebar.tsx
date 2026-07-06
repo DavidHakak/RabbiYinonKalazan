@@ -3,7 +3,7 @@
 import { ExternalLink, GraduationCap, LayoutDashboard, MessageSquare, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { BrandMark } from "@/components/brand/brand-mark";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +23,7 @@ export function AdminSidebar() {
   return (
     <aside className="flex w-full shrink-0 flex-col gap-6 border-b border-navy-700 bg-navy-900 p-4 md:h-dvh md:w-64 md:border-b-0 md:border-e">
       <Link href="/admin" className="flex items-center gap-2 px-2 pt-2">
-        <BrandMark className="size-8 text-gold-500" />
+        <BrandLogo size={32} className="size-8" />
         <span className="font-serif text-sm font-bold text-cream-100">
           {t("admin.title")}
         </span>

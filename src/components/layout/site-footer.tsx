@@ -2,6 +2,7 @@ import { MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Logo } from "@/components/brand/logo";
+import { InstallAppCard } from "@/components/common/install-app";
 import { footerNavKeys, navByKey } from "@/config/navigation";
 import { socialLinks } from "@/config/site";
 import { Link } from "@/i18n/navigation";
@@ -16,8 +17,9 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3">
           {/* Brand */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             <Logo name={t("site.name")} tagline={t("site.tagline")} tone="light" />
+            <InstallAppCard />
           </div>
 
           {/* Links */}

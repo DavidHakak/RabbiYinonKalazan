@@ -123,12 +123,13 @@ export const profiles = pgTable("profiles", {
   email: text("email").notNull().unique(),
 
   /** Phone in E.164 (e.g. +972501234567 / +12125550123). */
-  phone: text("phone").notNull(),
+  /** E.164 phone — optional (a self-registered user hasn't supplied one yet). */
+  phone: text("phone"),
   /** Dialing country for the phone, ISO-3166 alpha-2 (IL, US, …). */
-  phoneCountry: text("phone_country").notNull(),
+  phoneCountry: text("phone_country"),
 
   /** Residence country, ISO-3166 alpha-2. */
-  country: text("country").notNull(),
+  country: text("country"),
   city: text("city"),
   addressLine: text("address_line"),
   postalCode: text("postal_code"),

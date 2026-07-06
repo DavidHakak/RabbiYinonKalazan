@@ -76,7 +76,7 @@ export default async function AdminUsersPage({
                     {p.email}
                   </td>
                   <td className="hidden px-4 py-3 text-muted-foreground sm:table-cell" dir="ltr">
-                    {formatPhone(p.phone, p.phoneCountry as CountryCode)}
+                    {p.phone ? formatPhone(p.phone, (p.phoneCountry ?? undefined) as CountryCode | undefined) : "—"}
                   </td>
                   <td className="px-4 py-3">
                     <Badge variant={roleTone[p.role] ?? "outline"}>
@@ -84,7 +84,7 @@ export default async function AdminUsersPage({
                     </Badge>
                   </td>
                   <td className="hidden px-4 py-3 text-muted-foreground lg:table-cell">
-                    {regionNames?.of(p.country) ?? p.country}
+                    {p.country ? (regionNames?.of(p.country) ?? p.country) : "—"}
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-1">

@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-import { BrandMark } from "./brand-mark";
+import { BrandLogo } from "./brand-logo";
 
 interface LogoProps {
   name: string;
@@ -28,7 +28,7 @@ export function Logo({
         className,
       )}
     >
-      <BrandMark className="h-10 w-10 shrink-0 text-gold-500" />
+      <BrandLogo size={44} priority className="h-11 w-11" />
       <span className="flex flex-col leading-none">
         <span
           className={cn(

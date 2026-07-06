@@ -2,6 +2,8 @@ import "server-only";
 
 import type { User } from "@supabase/supabase-js";
 
+import { getProfileByAuthUserId } from "@/repositories/profiles";
+
 import { createSupabaseServerClient } from "./supabase/server";
 
 /**
@@ -16,18 +18,21 @@ const ADMIN_EMAILS = (process.env.ADMIN_EMAILS ?? "")
 /**
  * Whether an authenticated user may enter the admin panel.
  *
- * Admins are recognized two ways (either suffices):
+ * Admins are recognized three ways (any suffices):
+ *  - their email is listed in `ADMIN_EMAILS` (bootstrap / override), or
  *  - a trusted `app_metadata.role` of `admin`/`editor` (set by `admin:create`), or
- *  - their email is listed in `ADMIN_EMAILS`.
+ *  - their managed profile role is `admin`/`editor` (set from the admin panel).
  *
- * Users created through the public /register flow have neither, so they are
- * regular users with NO admin access.
+ * Users created through the public /register flow default to role `user`, so
+ * they have NO admin access until promoted.
  */
-export function isAdminUser(user: User | null): boolean {
+export async function isAdminUser(user: User | null): Promise<boolean> {
   if (!user) return false;
-  const role = (user.app_metadata as { role?: string } | undefined)?.role;
-  if (role === "admin" || role === "editor") return true;
-  return Boolean(user.email && ADMIN_EMAILS.includes(user.email.toLowerCase()));
+  if (user.email && ADMIN_EMAILS.includes(user.email.toLowerCase())) return true;
+  const metaRole = (user.app_metadata as { role?: string } | undefined)?.role;
+  if (metaRole === "admin" || metaRole === "editor") return true;
+  const profile = await getProfileByAuthUserId(user.id);
+  return profile?.role === "admin" || profile?.role === "editor";
 }
 
 /** The current Supabase Auth user, or null. */

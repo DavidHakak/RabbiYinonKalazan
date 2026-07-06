@@ -108,7 +108,7 @@ export function UserForm({ profile }: { profile?: Profile }) {
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="phone">{f("phone")}</Label>
-          <Input id="phone" type="tel" dir="ltr" required placeholder="050-123-4567" {...register("phone")} />
+          <Input id="phone" type="tel" dir="ltr" placeholder="050-123-4567" {...register("phone")} />
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="country">{f("country")}</Label>

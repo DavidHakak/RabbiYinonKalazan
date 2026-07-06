@@ -40,8 +40,8 @@ export async function saveProfile(
   }
   const v = parsed.data;
 
-  const phoneE164 = toE164(v.phone, v.phoneCountry as CountryCode);
-  if (!phoneE164) return { ok: false, error: "phoneInvalid" };
+  const phoneE164 = v.phone ? toE164(v.phone, v.phoneCountry as CountryCode) : null;
+  if (v.phone && !phoneE164) return { ok: false, error: "phoneInvalid" };
 
   // Enforce unique email across profiles.
   const existing = await getProfileByEmail(v.email);
@@ -56,8 +56,8 @@ export async function saveProfile(
     lastName: v.lastName,
     email: v.email,
     phone: phoneE164,
-    phoneCountry: v.phoneCountry,
-    country: v.country,
+    phoneCountry: phoneE164 ? v.phoneCountry : null,
+    country: v.country || null,
     city: v.city || null,
     addressLine: v.addressLine || null,
     postalCode: v.postalCode || null,

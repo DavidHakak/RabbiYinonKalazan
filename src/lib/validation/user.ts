@@ -38,7 +38,7 @@ export const profileSchema = z
     firstName: name,
     lastName: name,
     email: z.string().trim().toLowerCase().max(160, "tooLong").email("emailInvalid"),
-    phone: z.string().trim().min(3, "phoneRequired").max(30, "tooLong"),
+    phone: z.string().trim().max(30, "tooLong").optional().or(z.literal("")),
     phoneCountry: country,
     country,
     city: optionalText(80),
@@ -67,7 +67,8 @@ export const profileSchema = z
     notes: optionalText(1000),
   })
   .superRefine((data, ctx) => {
-    if (!isValidPhone(data.phone, data.phoneCountry as CountryCode)) {
+    // Phone is optional, but must be valid for the country when provided.
+    if (data.phone && !isValidPhone(data.phone, data.phoneCountry as CountryCode)) {
       ctx.addIssue({ code: "custom", path: ["phone"], message: "phoneInvalid" });
     }
   });
