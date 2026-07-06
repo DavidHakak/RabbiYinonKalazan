@@ -198,6 +198,27 @@
     "delete": "מחיקה",
     "save": "שמירה",
     "cancel": "ביטול",
-    "confirmDelete": "האם למחוק פריט זה?"
+    "confirmDelete": "האם למחוק פריט זה?",
+    "newLecture": "הרצאה חדשה",
+    "editLecture": "עריכת הרצאה",
+    "backToList": "חזרה לרשימה",
+    "saved": "נשמר בהצלחה",
+    "deleted": "נמחק",
+    "saveError": "שגיאה בשמירה",
+    "empty": "אין עדיין פריטים. הוסיפו את הראשון.",
+    "fields": {
+      "slug": "מזהה כתובת (slug)",
+      "title": "כותרת",
+      "description": "תיאור",
+      "topic": "נושא",
+      "series": "סדרה",
+      "contentType": "סוג תוכן",
+      "mediaUrl": "קישור למדיה (וידאו/אודיו)",
+      "duration": "משך (דקות)",
+      "publishedAt": "תאריך פרסום",
+      "sortOrder": "סדר תצוגה",
+      "featured": "מומלץ (מוצג בבית)",
+      "published": "מפורסם"
+    }
   }
 }

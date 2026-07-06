@@ -198,6 +198,27 @@
     "delete": "Delete",
     "save": "Save",
     "cancel": "Cancel",
-    "confirmDelete": "Delete this item?"
+    "confirmDelete": "Delete this item?",
+    "newLecture": "New lecture",
+    "editLecture": "Edit lecture",
+    "backToList": "Back to list",
+    "saved": "Saved successfully",
+    "deleted": "Deleted",
+    "saveError": "Error saving",
+    "empty": "No items yet. Add the first one.",
+    "fields": {
+      "slug": "URL slug",
+      "title": "Title",
+      "description": "Description",
+      "topic": "Topic",
+      "series": "Series",
+      "contentType": "Content type",
+      "mediaUrl": "Media URL (video/audio)",
+      "duration": "Duration (minutes)",
+      "publishedAt": "Publish date",
+      "sortOrder": "Sort order",
+      "featured": "Featured (shown on home)",
+      "published": "Published"
+    }
   }
 }
