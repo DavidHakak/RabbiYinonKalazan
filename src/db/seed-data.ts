@@ -1,4 +1,10 @@
-import type { DvarTorah, Event, Lecture, SiteContentBlock } from "./schema";
+import type {
+  ContactMessage,
+  DvarTorah,
+  Event,
+  Lecture,
+  SiteContentBlock,
+} from "./schema";
 
 /**
  * Bundled sample content.
@@ -267,5 +273,44 @@ export const sampleSiteContent: SiteContentBlock[] = [
       en: "Your contribution makes it possible to keep spreading Torah, holding lectures and developing new content for the benefit of all.",
     },
     updatedAt: d("2026-01-01T12:00:00Z"),
+  },
+];
+
+export const sampleContactMessages: ContactMessage[] = [
+  {
+    id: "msg-warm-words",
+    name: "אליהו כהן",
+    email: "eliyahu@example.com",
+    phone: null,
+    subject: null,
+    category: "rabbi",
+    message:
+      "רציתי להודות לרב על השיעורים המרתקים. כל הרצאה פותחת לי עולם חדש במחשבת ישראל. תודה רבה על העבודה הקדושה!",
+    handled: false,
+    createdAt: d("2026-07-04T09:15:00Z"),
+  },
+  {
+    id: "msg-site-feedback",
+    name: "Sarah Levi",
+    email: "sarah.levi@example.com",
+    phone: null,
+    subject: null,
+    category: "site",
+    message:
+      "The new website looks beautiful. One small note — it would be great to have a search box for the lectures. Keep up the great work!",
+    handled: true,
+    createdAt: d("2026-07-02T18:40:00Z"),
+  },
+  {
+    id: "msg-general",
+    name: "משפחת אברהמי",
+    email: null,
+    phone: "052-9876543",
+    subject: null,
+    category: "general",
+    message:
+      "האם ניתן להזמין את הרב להרצאה בקהילה שלנו בחודש הבא? נשמח לתאם. אפשר לחזור אלינו לטלפון.",
+    handled: false,
+    createdAt: d("2026-06-28T20:05:00Z"),
   },
 ];

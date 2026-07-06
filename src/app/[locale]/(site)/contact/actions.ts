@@ -1,30 +1,43 @@
 "use server";
 
 import { createContactMessage } from "@/repositories/contact";
+import { anyContainsProfanity } from "@/lib/moderation/profanity";
 import { contactSchema, type ContactInput } from "@/lib/validation/contact";
 
 export interface ContactActionResult {
   ok: boolean;
+  /** i18n key under `contact.form.errors.*` when `ok` is false. */
+  error?: string;
 }
 
-/** Validate and persist a contact-form submission. */
+/** Validate, moderate and persist a contact/feedback submission. */
 export async function submitContact(
   input: ContactInput,
 ): Promise<ContactActionResult> {
   const parsed = contactSchema.safeParse(input);
-  if (!parsed.success) return { ok: false };
+  if (!parsed.success) {
+    return { ok: false, error: parsed.error.issues[0]?.message ?? "invalid" };
+  }
+
+  const { name, email, phone, message, category } = parsed.data;
+
+  // Re-run the profanity guard server-side — never trust the client.
+  if (anyContainsProfanity(name, message)) {
+    return { ok: false, error: "profanity" };
+  }
 
   try {
     await createContactMessage({
-      name: parsed.data.name,
-      email: parsed.data.email,
-      phone: parsed.data.phone || null,
-      subject: parsed.data.subject || null,
-      message: parsed.data.message,
+      name,
+      email: email || null,
+      phone: phone || null,
+      subject: null,
+      category,
+      message,
     });
     return { ok: true };
   } catch (error) {
     console.error("[contact] failed to store message", error);
-    return { ok: false };
+    return { ok: false, error: "server" };
   }
 }

@@ -15,6 +15,20 @@
       "when": 1783363522526,
       "tag": "0001_enable_rls",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1783365752159,
+      "tag": "0002_orange_mojo",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1783366149663,
+      "tag": "0003_dizzy_angel",
+      "breakpoints": true
     }
   ]
 }

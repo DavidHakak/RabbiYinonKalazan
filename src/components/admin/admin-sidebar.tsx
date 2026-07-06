@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, GraduationCap, LayoutDashboard } from "lucide-react";
+import { ExternalLink, GraduationCap, LayoutDashboard, MessageSquare, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { BrandMark } from "@/components/brand/brand-mark";
@@ -12,6 +12,8 @@ import { LogoutButton } from "./logout-button";
 const items = [
   { key: "dashboard", href: "/admin", icon: LayoutDashboard, exact: true, labelKey: "admin.dashboard" },
   { key: "lectures", href: "/admin/lectures", icon: GraduationCap, exact: false, labelKey: "nav.lectures" },
+  { key: "users", href: "/admin/users", icon: Users, exact: false, labelKey: "admin.users.title" },
+  { key: "messages", href: "/admin/messages", icon: MessageSquare, exact: false, labelKey: "admin.messages.title" },
 ];
 
 export function AdminSidebar() {

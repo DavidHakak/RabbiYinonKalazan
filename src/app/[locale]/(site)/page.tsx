@@ -26,14 +26,22 @@ export default function HomePage({
       <Hero
         title={t("site.name")}
         subtitle={t("site.tagline")}
-        image={{ src: "/images/rabbi.png", alt: t("site.name"), priority: true }}
+        image={{
+          src: "/images/rabbi.png",
+          alt: t("site.name"),
+          priority: true,
+        }}
         actions={
           <>
             <Button asChild variant="gold" size="lg">
-              <Link href={navByKey.support.href}>{t("home.hero.ctaSupport")}</Link>
+              <Link href={navByKey.support.href}>
+                {t("home.hero.ctaSupport")}
+              </Link>
             </Button>
             <Button asChild variant="navy" size="lg">
-              <Link href={navByKey.contact.href}>{t("home.hero.ctaContact")}</Link>
+              <Link href={navByKey.contact.href}>
+                {t("home.hero.ctaContact")}
+              </Link>
             </Button>
           </>
         }
@@ -49,7 +57,7 @@ export default function HomePage({
         <figure className="mx-auto w-full max-w-4xl">
           <div className="relative aspect-1800/456 w-full overflow-hidden rounded-2xl shadow-2xl ring-1 ring-gold-500/25">
             <Image
-              src="/images/sefarim-shelf.jpg"
+              src="/images/sefarim-shelf.png"
               alt={t("home.sections.aronAlt")}
               fill
               sizes="(max-width: 768px) 92vw, 56rem"

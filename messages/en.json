@@ -155,7 +155,7 @@
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "We'd love to hear from you — questions, booking lectures and collaborations",
+    "subtitle": "Your place to leave a kind word or a note — about the Rabbi and about the site. We'd love to hear from you.",
     "form": {
       "name": "Full name",
       "email": "Email",
@@ -165,14 +165,35 @@
       "send": "Send message",
       "successTitle": "Message sent",
       "successText": "Thank you for reaching out, we'll get back to you soon.",
-      "errorText": "Something went wrong sending your message. Please try again."
+      "errorText": "Something went wrong sending your message. Please try again.",
+      "category": "Subject",
+      "optional": "optional",
+      "messagePlaceholder": "Write your message here…",
+      "sending": "Sending…",
+      "categories": {
+        "rabbi": "Request to the Rabbi",
+        "site": "Feedback about the site",
+        "general": "General"
+      },
+      "errors": {
+        "nameRequired": "Please enter your name (at least 2 characters)",
+        "messageRequired": "Please write a message (at least 5 characters)",
+        "invalidEmail": "That email address doesn't look valid",
+        "invalidPhone": "That phone number doesn't look valid",
+        "tooLong": "That text is too long",
+        "profanity": "Please keep the message respectful",
+        "server": "Something went wrong sending your message. Please try again.",
+        "invalid": "Some fields are invalid. Please check and try again."
+      }
     },
     "details": {
       "title": "Contact details",
       "phone": "Phone",
       "email": "Email",
       "location": "Location"
-    }
+    },
+    "intro": "Leave us warm words, constructive criticism, or notes about the site. Every message reaches us directly. An email or phone number is optional — only if you'd like us to reply.",
+    "social": "Follow the Rabbi"
   },
   "footer": {
     "contactTitle": "Contact",
@@ -219,6 +240,78 @@
       "sortOrder": "Sort order",
       "featured": "Featured (shown on home)",
       "published": "Published"
+    },
+    "users": {
+      "title": "Users",
+      "new": "New user",
+      "edit": "Edit user",
+      "empty": "No users yet. Add the first one.",
+      "sections": {
+        "identity": "Personal details",
+        "contact": "Phone & address",
+        "account": "Account & role"
+      },
+      "fields": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "phone": "Phone",
+        "phoneCountry": "Dialing country",
+        "country": "Country",
+        "city": "City",
+        "addressLine": "Address",
+        "postalCode": "Postal code",
+        "role": "Role",
+        "status": "Status",
+        "preferredLocale": "Preferred language",
+        "birthDate": "Date of birth",
+        "notes": "Notes"
+      },
+      "roles": {
+        "admin": "Admin",
+        "editor": "Editor",
+        "user": "Regular user"
+      },
+      "statuses": {
+        "active": "Active",
+        "invited": "Invited",
+        "disabled": "Disabled"
+      },
+      "localeNames": {
+        "he": "Hebrew",
+        "en": "English"
+      },
+      "errors": {
+        "nameTooShort": "Name is too short",
+        "nameInvalid": "Name contains invalid characters",
+        "tooLong": "Text is too long",
+        "emailInvalid": "Invalid email address",
+        "phoneRequired": "Please enter a phone number",
+        "phoneInvalid": "Phone number is invalid for the selected country",
+        "countryInvalid": "Invalid country",
+        "postalInvalid": "Invalid postal code",
+        "birthDateInvalid": "Invalid date of birth",
+        "emailTaken": "This email already exists in the system",
+        "invalid": "Some fields are invalid. Please check and try again."
+      }
+    },
+    "messages": {
+      "title": "Messages",
+      "summary": "{total} messages · {unhandled} pending",
+      "sender": "Sender",
+      "category": "Subject",
+      "message": "Message",
+      "date": "Date",
+      "status": "Status",
+      "new": "New",
+      "handled": "Handled",
+      "empty": "No messages yet.",
+      "markHandled": "Mark as handled",
+      "markUnhandled": "Mark as unhandled",
+      "markedHandled": "Marked as handled",
+      "markedUnhandled": "Marked as unhandled",
+      "pendingHint": "You have {count} messages awaiting a reply.",
+      "allClearHint": "All messages handled — nicely done!"
     }
   }
 }
