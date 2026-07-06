@@ -4,8 +4,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { use } from "react";
 
 import { Quote } from "@/components/common/quote";
+import { SectionHeading } from "@/components/common/section-heading";
 import { Hero } from "@/components/common/hero";
-import { Ornament } from "@/components/common/ornament";
 import { Section } from "@/components/layout/section";
 import { DonationMethods } from "@/components/support/donation-methods";
 import type { Locale } from "@/i18n/config";
@@ -17,7 +17,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "support" });
-  return { title: t("heading") };
+  return { title: t("heading"), description: t("lead") };
 }
 
 export default function SupportPage({
@@ -28,30 +28,21 @@ export default function SupportPage({
   const { locale } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("support");
-  const body = t.raw("body") as string[];
-  const body2 = t.raw("body2") as string[];
+  const paragraphs = t.raw("body") as string[];
 
   return (
     <>
-      <Hero size="sm" eyebrow={t("bsd")} title={t("heading")} />
+      <Hero size="sm" title={t("heading")} subtitle={t("lead")} />
 
-      {/* The article — rendered exactly in the order it was written */}
+      {/* The teaching: featured verse + article */}
       <Section tone="default" size="lg">
-        <div className="mx-auto max-w-3xl space-y-6 text-lg leading-loose text-foreground/90">
-          {body.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+        <Quote>{t("verse")}</Quote>
+        <p className="mt-3 text-center text-sm text-muted-foreground">
+          {t("verseRef")}
+        </p>
 
-          {/* "As the sages explained in the verse:" + the verse */}
-          <p className="pt-2">{t("sagesIntro")}</p>
-        </div>
-
-        <div className="my-8">
-          <Quote>{t("verse")}</Quote>
-        </div>
-
-        <div className="mx-auto max-w-3xl space-y-6 text-lg leading-loose text-foreground/90">
-          {body2.map((paragraph, index) => (
+        <div className="mx-auto mt-14 max-w-3xl space-y-6 text-lg leading-loose text-foreground/90">
+          {paragraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
@@ -59,9 +50,11 @@ export default function SupportPage({
 
       {/* Ways to give */}
       <Section tone="parchment" size="lg">
-        <div className="mb-12 flex justify-center">
-          <Ornament width="lg" />
-        </div>
+        <SectionHeading
+          title={t("give.title")}
+          subtitle={t("give.subtitle")}
+          className="mb-12"
+        />
         <DonationMethods />
       </Section>
     </>

@@ -1,9 +1,4 @@
-import {
-  FacebookIcon,
-  InstagramIcon,
-  WhatsAppIcon,
-  YouTubeIcon,
-} from "@/components/brand/social-icons";
+import { FacebookIcon, YouTubeIcon } from "@/components/brand/social-icons";
 
 /**
  * Factual, non-translatable site data (contact channels, social profiles).
@@ -42,8 +37,16 @@ export interface SocialLink {
 
 /** Social profiles shown in the footer. Set `href` to "" to hide one. */
 export const socialLinks: SocialLink[] = [
-  { key: "youtube", href: "https://youtube.com", icon: YouTubeIcon, label: "YouTube" },
-  { key: "facebook", href: "https://facebook.com", icon: FacebookIcon, label: "Facebook" },
-  { key: "instagram", href: "https://instagram.com", icon: InstagramIcon, label: "Instagram" },
-  { key: "whatsapp", href: "https://wa.me/972521234567", icon: WhatsAppIcon, label: "WhatsApp" },
+  {
+    key: "youtube",
+    href: "https://www.youtube.com/user/yinonkalazan",
+    icon: YouTubeIcon,
+    label: "YouTube",
+  },
+  {
+    key: "facebook",
+    href: "https://www.facebook.com/RabbiYinonKalazan",
+    icon: FacebookIcon,
+    label: "Facebook",
+  },
 ].filter((s) => s.href.length > 0);

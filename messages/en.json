@@ -57,6 +57,10 @@
     "sections": {
       "highlightsTitle": "Highlights",
       "highlightsSubtitle": "Everything on the site, at a glance",
+      "aronTitle": "The Jewish Bookshelf",
+      "aronSubtitle": "Generations of Torah, wisdom and Jewish thought — a living tradition we draw from.",
+      "aronAlt": "Shelves of sacred books in the study hall",
+      "aronCredit": "Photo: YoavN123 · Wikimedia Commons · CC BY-SA 3.0",
       "latestLecturesTitle": "Latest Lectures",
       "latestLecturesSubtitle": "A selection from the lecture library",
       "latestDvarTorahTitle": "Weekly Torah",
@@ -125,26 +129,28 @@
   "support": {
     "title": "Support Our Work",
     "subtitle": "Support the work and become a partner in spreading Torah",
-    "bsd": "בס\"ד",
     "heading": "Become Involved",
+    "lead": "Judaism teaches that every person has a purpose and a role in the world, and that each of us has been given the tools and qualities fitting to realize it.",
+    "verse": "Rejoice, O Zebulun, in your going out, and Issachar, in your tents",
+    "verseRef": "Chapter 3, verse 18 · Parashat Vezot HaBerachah",
     "body": [
-      "Judaism teaches that every person has a purpose and a role in the world, and that everyone has received the appropriately fitting tools and qualities to realize that purpose.",
-      "The verse in the Book of Deuteronomy in Parashat Vezot Haberachah [Chapter 3, verse 18]: \"Of Zebulun he said: Rejoice, O Zebulun, in your excursions, and Issachar in your tents.\" Rashi brings forth the Midrash explanation – Issachar and Zebulun made a partnership, \"Zebulun to the seaside shall dwell\" – and go out to the parchment [trade] in ships and get drunk – and put into Issachar's mouth, and they [Issachar] sit and engage in the Torah, therefore [Moses] preceded Zebulun to Issachar – that Issachar's teaching by Zebulun was, and also quoted in Halacha.",
-      "And he who is unable to learn – because he does not know how to learn, or because of the worries of time – will suffice [will materially support] the other learners – and will consider himself as if he is learning himself."
-    ],
-    "sagesIntro": "As the sages explained in the verse:",
-    "verse": "Zebulun rejoiced at your going out and Issachar in the process",
-    "body2": [
-      "The urgent and important national mission of our generation is to strengthen the Jewish consciousness and stop cultural and practical assimilation. The only way to do this is to teach the depth and beauty of Judaism, to show its wisdom and power, and thus to restore the trust of the Jews in their glorious heritage.",
-      "We read and offer to everyone that it is important to him and close to his heart and has the financial and organizational ability, to organize – lectures, seminars, sabbaticals – in every Jewish community and kibbutz in Israel and around the world, and it was his part and right in this world and the next.",
-      "Those interested in contributing and volunteering for this important task can contact Rabbi Yinon who will be happy to come and deliver – workshops, lectures, seminars, sabbaticals – wherever there is a demand for it."
+      "On this verse, Rashi brings the words of the Midrash: Zebulun and Issachar formed a partnership between them. Zebulun would dwell by the seashore, setting out to trade in ships and earn, and would provide for Issachar — who would sit and engage in Torah. Therefore Moses mentioned Zebulun before Issachar, for Issachar's Torah was made possible through Zebulun. So too it is brought in halacha, in the Tur and the Shulchan Aruch (Yoreh De'ah 246): every Jew is obligated in the study of Torah, whether poor or wealthy, whole in body or afflicted, and must set fixed times for Torah by day and by night, as it says: \"You shall meditate on it day and night.\"",
+      "And one who is unable to learn — whether because he does not know how, or because of the pressures of life — should support those who do learn, and it will be accounted to him as though he had learned himself, as the sages expounded on the verse: \"Rejoice, O Zebulun, in your going out, and Issachar, in your tents.\"",
+      "The urgent and vital national mission of our generation is to strengthen Jewish consciousness and to halt cultural and practical assimilation. The only way to do this is to teach the depth and beauty of Judaism, to reveal its wisdom and power, and thereby to restore the Jewish people's trust in their glorious heritage.",
+      "We call upon and invite everyone to whom this is important and dear, and who has the financial and organizational means, to arrange lectures, study days and Shabbatons in every Jewish community and settlement in Israel and around the world — and may it be their portion and merit in this world and the next.",
+      "Those wishing to contribute and volunteer for this important mission are welcome to contact Rabbi Yinon, who will gladly come to deliver workshops, lectures, study days and Shabbatons wherever there is demand."
     ],
     "give": {
-      "donate": "Donate"
+      "title": "Ways to Give and Partner",
+      "subtitle": "Choose whichever is most convenient for you",
+      "paypal": "Donate with PayPal",
+      "venmo": "Donate with Venmo",
+      "zelle": "Donate with Zelle"
     },
     "zelle": {
-      "title": "Zelle",
-      "description": "Zelle account linked to email:"
+      "title": "Donate with Zelle",
+      "description": "The Zelle account is linked to the following email address:",
+      "hint": "Click the address to open an email"
     }
   },
   "contact": {

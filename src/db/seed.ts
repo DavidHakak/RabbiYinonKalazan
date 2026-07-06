@@ -22,9 +22,9 @@ import {
 config({ path: ".env.local" });
 config({ path: ".env" });
 
-const url = process.env.DATABASE_URL;
+const url = process.env.DIRECT_URL ?? process.env.DATABASE_URL;
 if (!url) {
-  console.error("✗ DATABASE_URL is not set. Add it to .env.local and retry.");
+  console.error("✗ DATABASE_URL is not set. Add it to .env and retry.");
   process.exit(1);
 }
 
