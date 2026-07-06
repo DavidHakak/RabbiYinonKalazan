@@ -1,0 +1,285 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Dark mode driven by a `.dark` class on <html> (used by the admin area / future toggle). */
+@custom-variant dark (&:is(.dark *));
+
+/*
+  ────────────────────────────────────────────────────────────────────────
+  BRAND DESIGN TOKENS
+  Single source of truth for the palette. Derived from the site mockups:
+  deep navy, warm gold, and a parchment/cream field.
+  Change these to re-skin the entire site.
+  ────────────────────────────────────────────────────────────────────────
+*/
+:root {
+  /* Navy scale */
+  --navy-50: #eef1f8;
+  --navy-100: #d6dcec;
+  --navy-200: #adbad8;
+  --navy-300: #7c8bb8;
+  --navy-400: #4c5f92;
+  --navy-500: #2b3f71;
+  --navy-600: #1b2c56;
+  --navy-700: #132244;
+  --navy-800: #0f1c39;
+  --navy-900: #0a1730;
+  --navy-950: #060f22;
+
+  /* Gold scale */
+  --gold-50: #fbf6ea;
+  --gold-100: #f4e8cc;
+  --gold-200: #e9d29b;
+  --gold-300: #ddbc6f;
+  --gold-400: #d0a54c;
+  --gold-500: #c29a4e;
+  --gold-600: #a67f38;
+  --gold-700: #85652c;
+  --gold-800: #654d24;
+  --gold-900: #4a381c;
+
+  /* Cream / parchment field */
+  --cream-50: #fdfbf6;
+  --cream-100: #faf6ee;
+  --cream-200: #f6f0e6;
+  --cream-300: #efe7d7;
+  --cream-400: #e6dbc6;
+  --cream-500: #d9c9ac;
+
+  /* Convenience brand aliases */
+  --brand-navy: var(--navy-800);
+  --brand-navy-deep: var(--navy-950);
+  --brand-gold: var(--gold-500);
+  --brand-gold-strong: var(--gold-600);
+  --brand-cream: var(--cream-200);
+}
+
+/*
+  ────────────────────────────────────────────────────────────────────────
+  SEMANTIC TOKENS (shadcn/ui contract) — LIGHT (default) THEME
+  These map the brand palette onto the roles shadcn components consume.
+  ────────────────────────────────────────────────────────────────────────
+*/
+:root {
+  --radius: 0.75rem;
+
+  --background: var(--cream-200);
+  --foreground: #1b2440;
+
+  --card: var(--cream-50);
+  --card-foreground: #1b2440;
+
+  --popover: var(--cream-50);
+  --popover-foreground: #1b2440;
+
+  --primary: var(--navy-800);
+  --primary-foreground: var(--cream-100);
+
+  --secondary: var(--cream-300);
+  --secondary-foreground: var(--navy-800);
+
+  --muted: var(--cream-300);
+  --muted-foreground: #6b6553;
+
+  --accent: var(--gold-100);
+  --accent-foreground: var(--navy-800);
+
+  --destructive: #b3261e;
+  --destructive-foreground: #fff8f5;
+
+  --border: #e4d9c5;
+  --input: #e0d4bd;
+  --ring: var(--gold-500);
+
+  /* Charts / data-viz (categorical, brand-tuned) */
+  --chart-1: var(--gold-500);
+  --chart-2: var(--navy-500);
+  --chart-3: var(--gold-700);
+  --chart-4: var(--navy-300);
+  --chart-5: #8a7a55;
+
+  /* Sidebar (admin) */
+  --sidebar: var(--navy-900);
+  --sidebar-foreground: var(--cream-100);
+  --sidebar-primary: var(--gold-500);
+  --sidebar-primary-foreground: var(--navy-950);
+  --sidebar-accent: var(--navy-700);
+  --sidebar-accent-foreground: var(--cream-100);
+  --sidebar-border: var(--navy-700);
+  --sidebar-ring: var(--gold-500);
+}
+
+.dark {
+  --background: var(--navy-950);
+  --foreground: #ece7db;
+
+  --card: var(--navy-900);
+  --card-foreground: #ece7db;
+
+  --popover: var(--navy-900);
+  --popover-foreground: #ece7db;
+
+  --primary: var(--gold-500);
+  --primary-foreground: var(--navy-950);
+
+  --secondary: var(--navy-800);
+  --secondary-foreground: #ece7db;
+
+  --muted: var(--navy-800);
+  --muted-foreground: #a9a48f;
+
+  --accent: var(--navy-700);
+  --accent-foreground: var(--gold-200);
+
+  --destructive: #e5484d;
+  --destructive-foreground: #fff8f5;
+
+  --border: color-mix(in oklab, var(--navy-100) 12%, transparent);
+  --input: color-mix(in oklab, var(--navy-100) 16%, transparent);
+  --ring: var(--gold-500);
+
+  --sidebar: var(--navy-950);
+  --sidebar-foreground: var(--cream-100);
+  --sidebar-primary: var(--gold-500);
+  --sidebar-primary-foreground: var(--navy-950);
+  --sidebar-accent: var(--navy-800);
+  --sidebar-accent-foreground: var(--cream-100);
+  --sidebar-border: color-mix(in oklab, var(--navy-100) 12%, transparent);
+  --sidebar-ring: var(--gold-500);
+}
+
+/*
+  ────────────────────────────────────────────────────────────────────────
+  TAILWIND THEME MAPPING
+  Exposes tokens as utilities: bg-background, text-primary, bg-navy-800,
+  text-gold-500, font-serif, rounded-lg, etc.
+  ────────────────────────────────────────────────────────────────────────
+*/
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand scales as direct utilities (bg-navy-800, text-gold-500, ...) */
+  --color-navy-50: var(--navy-50);
+  --color-navy-100: var(--navy-100);
+  --color-navy-200: var(--navy-200);
+  --color-navy-300: var(--navy-300);
+  --color-navy-400: var(--navy-400);
+  --color-navy-500: var(--navy-500);
+  --color-navy-600: var(--navy-600);
+  --color-navy-700: var(--navy-700);
+  --color-navy-800: var(--navy-800);
+  --color-navy-900: var(--navy-900);
+  --color-navy-950: var(--navy-950);
+
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: var(--gold-800);
+  --color-gold-900: var(--gold-900);
+
+  --color-cream-50: var(--cream-50);
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+  --color-cream-300: var(--cream-300);
+  --color-cream-400: var(--cream-400);
+  --color-cream-500: var(--cream-500);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-assistant), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-frank-ruhl), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+    text-wrap: balance;
+  }
+
+  /* Logical-property helpers so RTL/LTR share one codebase */
+  [dir="rtl"] .flip-rtl {
+    transform: scaleX(-1);
+  }
+}
+
+@layer utilities {
+  /* Parchment / manuscript texture overlay used behind the hero. */
+  .bg-parchment {
+    background-color: var(--cream-100);
+    background-image:
+      radial-gradient(
+        circle at 20% 15%,
+        color-mix(in oklab, var(--gold-500) 8%, transparent) 0,
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 85% 80%,
+        color-mix(in oklab, var(--navy-500) 6%, transparent) 0,
+        transparent 40%
+      );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}

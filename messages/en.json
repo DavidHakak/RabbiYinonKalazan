@@ -1,0 +1,197 @@
+{
+  "site": {
+    "name": "Rabbi Yinon Kalazan",
+    "shortName": "Rabbi Kalazan",
+    "tagline": "Lecturer in Jewish Philosophy and Jewish Thought",
+    "description": "Lectures, classes and Torah insights by Rabbi Yinon Kalazan — Jewish philosophy and Jewish thought."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "lectures": "Lectures",
+    "dvarTorah": "Weekly Torah",
+    "events": "Events",
+    "support": "Support Our Work",
+    "contact": "Contact",
+    "menu": "Menu",
+    "skipToContent": "Skip to content"
+  },
+  "common": {
+    "readMore": "Read more",
+    "watch": "Watch",
+    "listen": "Listen",
+    "download": "Download",
+    "share": "Share",
+    "search": "Search",
+    "filterBy": "Filter by",
+    "all": "All",
+    "clearFilters": "Clear filters",
+    "loading": "Loading…",
+    "noResults": "No results found",
+    "noResultsHint": "Try adjusting your search or filters.",
+    "backToHome": "Back to home",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page",
+    "minutes": "min",
+    "duration": "Duration",
+    "publishedOn": "Published on",
+    "category": "Category",
+    "series": "Series",
+    "topic": "Topic",
+    "contentType": "Content type",
+    "required": "Required",
+    "submit": "Submit",
+    "sending": "Sending…",
+    "language": "Language"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Welcome",
+      "ctaSupport": "Support Our Work",
+      "ctaContact": "Contact"
+    },
+    "quote": "A worldview is not a spiritual luxury, but a compass for life.",
+    "sections": {
+      "highlightsTitle": "Highlights",
+      "highlightsSubtitle": "Everything on the site, at a glance",
+      "latestLecturesTitle": "Latest Lectures",
+      "latestLecturesSubtitle": "A selection from the lecture library",
+      "latestDvarTorahTitle": "Weekly Torah",
+      "latestDvarTorahSubtitle": "A weekly reflection on the parasha",
+      "upcomingEventsTitle": "Upcoming Events",
+      "upcomingEventsSubtitle": "Conferences, gatherings and classes"
+    },
+    "cards": {
+      "supportTitle": "Support Our Work",
+      "supportText": "Support the work and become a partner in spreading Torah.",
+      "eventsTitle": "Events",
+      "eventsText": "Upcoming events and conferences.",
+      "dvarTorahTitle": "Weekly Torah",
+      "dvarTorahText": "Torah insights, ideas and reflections for Shabbat.",
+      "lecturesTitle": "Lectures",
+      "lecturesText": "A library of lectures on Jewish philosophy and thought.",
+      "aboutTitle": "About",
+      "aboutText": "Biography, worldview and our vision.",
+      "homeTitle": "Home",
+      "homeText": "Welcome to the website of Rabbi Yinon Kalazan.",
+      "contactTitle": "Contact",
+      "contactText": "Questions, booking lectures and collaborations."
+    }
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Biography, worldview and vision",
+    "bioTitle": "About Rabbi Yinon Kalazan",
+    "bioPlaceholder": "The rabbi's biography and background will appear here. This content can be edited from the admin panel.",
+    "visionTitle": "The Vision",
+    "visionPlaceholder": "The vision and philosophy behind the work will appear here."
+  },
+  "lectures": {
+    "title": "Lectures",
+    "subtitle": "Rabbi Yinon Kalazan's lecture library on Jewish philosophy and Jewish thought",
+    "searchPlaceholder": "Search lectures…",
+    "inSeries": "Part of",
+    "filters": {
+      "topic": "Topic",
+      "series": "Lecture series",
+      "contentType": "Content type"
+    },
+    "contentTypes": {
+      "video": "Video",
+      "audio": "Audio",
+      "article": "Article"
+    },
+    "empty": "No lectures to show yet."
+  },
+  "dvarTorah": {
+    "title": "Weekly Torah",
+    "subtitle": "Torah insights, ideas and reflections for Shabbat",
+    "parasha": "Parashat",
+    "empty": "No Torah insights to show yet."
+  },
+  "events": {
+    "title": "Events",
+    "subtitle": "Conferences, gatherings and classes",
+    "upcoming": "Upcoming events",
+    "past": "Past events",
+    "register": "Register",
+    "location": "Location",
+    "when": "When",
+    "empty": "No events scheduled right now."
+  },
+  "support": {
+    "title": "Support Our Work",
+    "subtitle": "Support the work and become a partner in spreading Torah",
+    "bsd": "בס\"ד",
+    "heading": "Become Involved",
+    "body": [
+      "Judaism teaches that every person has a purpose and a role in the world, and that everyone has received the appropriately fitting tools and qualities to realize that purpose.",
+      "The verse in the Book of Deuteronomy in Parashat Vezot Haberachah [Chapter 3, verse 18]: \"Of Zebulun he said: Rejoice, O Zebulun, in your excursions, and Issachar in your tents.\" Rashi brings forth the Midrash explanation – Issachar and Zebulun made a partnership, \"Zebulun to the seaside shall dwell\" – and go out to the parchment [trade] in ships and get drunk – and put into Issachar's mouth, and they [Issachar] sit and engage in the Torah, therefore [Moses] preceded Zebulun to Issachar – that Issachar's teaching by Zebulun was, and also quoted in Halacha.",
+      "And he who is unable to learn – because he does not know how to learn, or because of the worries of time – will suffice [will materially support] the other learners – and will consider himself as if he is learning himself."
+    ],
+    "sagesIntro": "As the sages explained in the verse:",
+    "verse": "Zebulun rejoiced at your going out and Issachar in the process",
+    "body2": [
+      "The urgent and important national mission of our generation is to strengthen the Jewish consciousness and stop cultural and practical assimilation. The only way to do this is to teach the depth and beauty of Judaism, to show its wisdom and power, and thus to restore the trust of the Jews in their glorious heritage.",
+      "We read and offer to everyone that it is important to him and close to his heart and has the financial and organizational ability, to organize – lectures, seminars, sabbaticals – in every Jewish community and kibbutz in Israel and around the world, and it was his part and right in this world and the next.",
+      "Those interested in contributing and volunteering for this important task can contact Rabbi Yinon who will be happy to come and deliver – workshops, lectures, seminars, sabbaticals – wherever there is a demand for it."
+    ],
+    "give": {
+      "donate": "Donate"
+    },
+    "zelle": {
+      "title": "Zelle",
+      "description": "Zelle account linked to email:"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "We'd love to hear from you — questions, booking lectures and collaborations",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send message",
+      "successTitle": "Message sent",
+      "successText": "Thank you for reaching out, we'll get back to you soon.",
+      "errorText": "Something went wrong sending your message. Please try again."
+    },
+    "details": {
+      "title": "Contact details",
+      "phone": "Phone",
+      "email": "Email",
+      "location": "Location"
+    }
+  },
+  "footer": {
+    "contactTitle": "Contact",
+    "linksTitle": "Important links",
+    "location": "Jerusalem, Israel",
+    "rights": "All rights reserved",
+    "followUs": "Follow us"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you were looking for doesn't exist or was removed.",
+    "cta": "Back to home"
+  },
+  "admin": {
+    "title": "Admin",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "email": "Email",
+    "password": "Password",
+    "dashboard": "Dashboard",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirmDelete": "Delete this item?"
+  }
+}
