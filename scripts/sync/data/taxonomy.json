@@ -1,0 +1,595 @@
+[
+  {
+    "slug": "assimilation-future-of-the-jewish-people",
+    "title": {
+      "he": "התבוללות - עתיד העם היהודי"
+    },
+    "subcategories": []
+  },
+  {
+    "slug": "end-of-days",
+    "title": {
+      "he": "אחרית הימים"
+    },
+    "subcategories": []
+  },
+  {
+    "slug": "israel",
+    "title": {
+      "he": "ישראל ואומות העולם"
+    },
+    "subcategories": []
+  },
+  {
+    "slug": "jewish-prophets",
+    "title": {
+      "he": "הנביאים"
+    },
+    "subcategories": []
+  },
+  {
+    "slug": "judaism-christianity-islam",
+    "title": {
+      "he": "יהדות, נצרות ואיסלאם"
+    },
+    "subcategories": []
+  },
+  {
+    "slug": "other-topics",
+    "title": {
+      "he": "נושאים נוספים"
+    },
+    "subcategories": []
+  },
+  {
+    "slug": "prayer",
+    "title": {
+      "he": "תפילה"
+    },
+    "subcategories": [
+      {
+        "slug": "birkat-hamazon",
+        "title": {
+          "he": "ברכת המזון"
+        }
+      },
+      {
+        "slug": "kadish",
+        "title": {
+          "he": "קדיש"
+        }
+      },
+      {
+        "slug": "psalms",
+        "title": {
+          "he": "תהילים"
+        }
+      },
+      {
+        "slug": "shema-israel",
+        "title": {
+          "he": "שמע ישראל"
+        }
+      },
+      {
+        "slug": "shemona-esrei-amidah-prayer",
+        "title": {
+          "he": "שמונה עשרה"
+        }
+      },
+      {
+        "slug": "tefilat-haparnasa-rosh-hashanah",
+        "title": {
+          "he": "תפילת הפרנסה"
+        }
+      },
+      {
+        "slug": "tefillah-prayer",
+        "title": {
+          "he": "תפילה"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "relationships-children-education",
+    "title": {
+      "he": "זוגיות וחינוך ילדים"
+    },
+    "subcategories": [
+      {
+        "slug": "children-education",
+        "title": {
+          "he": "חינוך ילדים"
+        }
+      },
+      {
+        "slug": "human-relations",
+        "title": {
+          "he": "יחסי אנוש"
+        }
+      },
+      {
+        "slug": "love",
+        "title": {
+          "he": "אהבה"
+        }
+      },
+      {
+        "slug": "relationships",
+        "title": {
+          "he": "זוגיות"
+        }
+      },
+      {
+        "slug": "the-jewish-home",
+        "title": {
+          "he": "הבית היהודי"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "shabbat-holidays",
+    "title": {
+      "he": "שבת, חגים ומועדים"
+    },
+    "subcategories": [
+      {
+        "slug": "counting-of-the-omer",
+        "title": {
+          "he": "ספירת העומר"
+        }
+      },
+      {
+        "slug": "eighth-of-tavet",
+        "title": {
+          "he": "ח׳ בטבת"
+        }
+      },
+      {
+        "slug": "hanukkah",
+        "title": {
+          "he": "חנוכה"
+        }
+      },
+      {
+        "slug": "israeli-independence-day",
+        "title": {
+          "he": "יום העצמאות"
+        }
+      },
+      {
+        "slug": "lag-baomer",
+        "title": {
+          "he": "לג' בעומר"
+        }
+      },
+      {
+        "slug": "month-of-adar",
+        "title": {
+          "he": "אדר"
+        }
+      },
+      {
+        "slug": "month-of-elul",
+        "title": {
+          "he": "חודש אלול"
+        }
+      },
+      {
+        "slug": "month-of-nissan",
+        "title": {
+          "he": "ניסן"
+        }
+      },
+      {
+        "slug": "month-of-tishrei",
+        "title": {
+          "he": "תשרי"
+        }
+      },
+      {
+        "slug": "passover",
+        "title": {
+          "he": "פסח"
+        }
+      },
+      {
+        "slug": "purim",
+        "title": {
+          "he": "פורים"
+        }
+      },
+      {
+        "slug": "rosh-chodesh-menachem-av",
+        "title": {
+          "he": "ראש חודש מנחם אב"
+        }
+      },
+      {
+        "slug": "rosh-chodesh",
+        "title": {
+          "he": "ראש חודש"
+        }
+      },
+      {
+        "slug": "rosh-hashanah",
+        "title": {
+          "he": "ראש השנה"
+        }
+      },
+      {
+        "slug": "shabbat-hagadol",
+        "title": {
+          "he": "שבת הגדול"
+        }
+      },
+      {
+        "slug": "shabbat",
+        "title": {
+          "he": "שבת"
+        }
+      },
+      {
+        "slug": "shavuot",
+        "title": {
+          "he": "שבועות"
+        }
+      },
+      {
+        "slug": "sukkot",
+        "title": {
+          "he": "סוכות"
+        }
+      },
+      {
+        "slug": "ten-days-of-repentance",
+        "title": {
+          "he": "עשרת ימי תשובה"
+        }
+      },
+      {
+        "slug": "the-tenth-of-tavet",
+        "title": {
+          "he": "עשרה בטבת"
+        }
+      },
+      {
+        "slug": "tisha-bav",
+        "title": {
+          "he": "תשעה באב"
+        }
+      },
+      {
+        "slug": "tu-bishvat",
+        "title": {
+          "he": "טו' בשבט"
+        }
+      },
+      {
+        "slug": "yom-kippur",
+        "title": {
+          "he": "יום הכיפורים"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "tanakh-and-current-affairs",
+    "title": {
+      "he": "תנ\"ך ואקטואליה"
+    },
+    "subcategories": []
+  },
+  {
+    "slug": "thirteen-principles-of-jewish-faith",
+    "title": {
+      "he": "שלש עשרה עיקרים"
+    },
+    "subcategories": [
+      {
+        "slug": "introduction-to-the-thirteen-principles-of-jewish-faith",
+        "title": {
+          "he": "מבוא"
+        }
+      },
+      {
+        "slug": "principle-1",
+        "title": {
+          "he": "היסוד הראשון"
+        }
+      },
+      {
+        "slug": "principle-10",
+        "title": {
+          "he": "היסוד העשירי"
+        }
+      },
+      {
+        "slug": "principle-11",
+        "title": {
+          "he": "היסוד האחד עשר"
+        }
+      },
+      {
+        "slug": "principle-12",
+        "title": {
+          "he": "היסוד השנים עשר"
+        }
+      },
+      {
+        "slug": "principle-13",
+        "title": {
+          "he": "היסוד השלושה עשר"
+        }
+      },
+      {
+        "slug": "principle-2",
+        "title": {
+          "he": "היסוד השני"
+        }
+      },
+      {
+        "slug": "principle-3",
+        "title": {
+          "he": "היסוד השלישי"
+        }
+      },
+      {
+        "slug": "principle-4",
+        "title": {
+          "he": "היסוד הרביעי"
+        }
+      },
+      {
+        "slug": "principle-5",
+        "title": {
+          "he": "היסוד החמישי"
+        }
+      },
+      {
+        "slug": "principle-6",
+        "title": {
+          "he": "היסוד השישי"
+        }
+      },
+      {
+        "slug": "principle-7",
+        "title": {
+          "he": "היסוד השביעי"
+        }
+      },
+      {
+        "slug": "principle-8",
+        "title": {
+          "he": "היסוד השמיני"
+        }
+      },
+      {
+        "slug": "principle-9",
+        "title": {
+          "he": "היסוד התשיעי"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "topics-in-jewish-philosophy",
+    "title": {
+      "he": "פילוסופיה יהודית"
+    },
+    "subcategories": [
+      {
+        "slug": "astrology-and-judaism",
+        "title": {
+          "he": "אסטרולוגיה ויהדות"
+        }
+      },
+      {
+        "slug": "exile-of-the-erev-rav",
+        "title": {
+          "he": "גלות ה - ״ערב רב״"
+        }
+      },
+      {
+        "slug": "free-choice",
+        "title": {
+          "he": "בחירה החפשית"
+        }
+      },
+      {
+        "slug": "fulfilled-prophecies",
+        "title": {
+          "he": "נבואות שהתגשמו"
+        }
+      },
+      {
+        "slug": "history-according-to-judaism",
+        "title": {
+          "he": "ההיסטוריה על פי היהדות"
+        }
+      },
+      {
+        "slug": "humanism-and-judaism",
+        "title": {
+          "he": "הומניזם ויהדות"
+        }
+      },
+      {
+        "slug": "kabbalah",
+        "title": {
+          "he": "תורת הקבלה"
+        }
+      },
+      {
+        "slug": "oral-torah",
+        "title": {
+          "he": "תורה שבעל פה"
+        }
+      },
+      {
+        "slug": "others",
+        "title": {
+          "he": "עוד"
+        }
+      },
+      {
+        "slug": "rationality-and-faith",
+        "title": {
+          "he": "רציונליות ואמונה"
+        }
+      },
+      {
+        "slug": "reincarnation-of-the-dead-life-in-the-light-of-death",
+        "title": {
+          "he": "תחיית המתים/החיים לאור המוות"
+        }
+      },
+      {
+        "slug": "righteous-suffer-wicked-prosper",
+        "title": {
+          "he": "צדיק ורע לו רשע וטוב לו"
+        }
+      },
+      {
+        "slug": "teshuva",
+        "title": {
+          "he": "התשובה"
+        }
+      },
+      {
+        "slug": "the-first-mans-sin",
+        "title": {
+          "he": "חטא אדם הראשון"
+        }
+      },
+      {
+        "slug": "the-mitzvot",
+        "title": {
+          "he": "המצוות"
+        }
+      },
+      {
+        "slug": "the-purpose-of-man-creation",
+        "title": {
+          "he": "תכלית האדם/הבריאה"
+        }
+      },
+      {
+        "slug": "the-status-of-women",
+        "title": {
+          "he": "מעמד האשה"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "topics-on-self-awareness",
+    "title": {
+      "he": "מודעות עצמית"
+    },
+    "subcategories": [
+      {
+        "slug": "body-and-soul",
+        "title": {
+          "he": "גוף ונשמה"
+        }
+      },
+      {
+        "slug": "others",
+        "title": {
+          "he": "אחרים"
+        }
+      },
+      {
+        "slug": "personality-development",
+        "title": {
+          "he": "פיתוח האישיות"
+        }
+      },
+      {
+        "slug": "power-of-speech",
+        "title": {
+          "he": "כח הדיבור"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "weekly-torah-portion",
+    "title": {
+      "he": "פרשת השבוע"
+    },
+    "subcategories": [
+      {
+        "slug": "4-parashiot",
+        "title": {
+          "he": "ארבע פרשיות"
+        }
+      },
+      {
+        "slug": "sefer-bamidbar",
+        "title": {
+          "he": "ספר במדבר"
+        }
+      },
+      {
+        "slug": "sefer-bereshit",
+        "title": {
+          "he": "ספר בראשית"
+        }
+      },
+      {
+        "slug": "sefer-devarim",
+        "title": {
+          "he": "ספר דברים"
+        }
+      },
+      {
+        "slug": "sefer-shemot",
+        "title": {
+          "he": "ספר שמות"
+        }
+      },
+      {
+        "slug": "sefer-vayikra",
+        "title": {
+          "he": "ספר ויקרא"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "books-by-ramhal",
+    "title": {
+      "he": "ספרי הרמח\"ל"
+    },
+    "subcategories": [
+      {
+        "slug": "daat-tvunot",
+        "title": {
+          "he": "דעת תבונות"
+        }
+      },
+      {
+        "slug": "derech-hashem",
+        "title": {
+          "he": "דרך השם"
+        }
+      },
+      {
+        "slug": "layesharim-tehila",
+        "title": {
+          "he": "לישרים תהילה"
+        }
+      },
+      {
+        "slug": "mesillat-yesharim",
+        "title": {
+          "he": "מסילת ישרים"
+        }
+      }
+    ]
+  }
+]

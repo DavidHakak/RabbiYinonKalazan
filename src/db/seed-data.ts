@@ -20,6 +20,16 @@ import type {
 
 const d = (iso: string) => new Date(iso);
 
+/** Source/sync defaults for demo rows (real content is imported from YouTube). */
+const noSource = {
+  sourceVideoId: null,
+  sourcePlatform: "youtube",
+  categorySlug: null,
+  subcategorySlug: null,
+  needsReview: false,
+  metadata: {},
+} as const;
+
 export const sampleLectures: Lecture[] = [
   {
     id: "emuna-vetvuna-rambam",
@@ -251,19 +261,19 @@ export const sampleSiteContent: SiteContentBlock[] = [
     key: "about-bio",
     title: { he: "על הרב ינון קלזאן", en: "About Rabbi Yinon Kalazan" },
     body: {
-      he: "הרב ינון קלזאן הוא מרצה לפילוסופיה יהודית ומחשבת ישראל, המשלב בהוראתו עומק מחשבתי עם נגישות ובהירות. שיעוריו והרצאותיו עוסקים ביסודות האמונה, בפילוסופיה יהודית ובהגות לאורך הדורות.",
-      en: "Rabbi Yinon Kalazan is a lecturer in Jewish philosophy and Jewish thought, combining intellectual depth with accessibility and clarity. His classes and lectures address the foundations of faith, Jewish philosophy and thought throughout the generations.",
+      he: "הרב ינון קלזאן הוא מרצה לפילוסופיה יהודית ומחשבת ישראל, ומן המרצים הבולטים בארגון „ערכים”. הוא פועל בעיקר בקהילות היהודיות בארצות הברית ומכונה „המרצה העולמי מארה״ב”, לצד מסעות הרצאות ברחבי ישראל והעולם.\n\nמשנתו מאופיינת בכמות גדושה של מידע אותנטי הנשען ישירות על המקורות — תנ״ך, משנה, גמרא, מדרש וקבלה — לצד גישה רציונלית-לוגית המנתחת כל נושא לעומקו. הרצאותיו מקשרות בין חכמת התורה הקדומה לבין שאלות הזמן והמציאות העכשווית.\n\nלאורך השנים העביר הרב קלזאן מאות הרצאות במגוון רחב של תחומים: תורה מן השמים ונפש האדם, קבלה ומיסטיקה יהודית, פרשות השבוע ותנ״ך, טעמי המצוות והחגים, אחרית הימים ותהליך הגאולה, וכן זוגיות, חינוך ופיתוח האישיות. ההרצאות זמינות בווידאו ובאודיו במגוון פלטפורמות. בשנת תשפ״ד ערך מסע הרצאות חיזוק ברחבי הארץ, ובכללן ברמת גן, אשדוד, הרצליה, מודיעין, ראש העין, חיפה וירושלים.",
+      en: "Rabbi Yinon Kalazan is a lecturer in Jewish philosophy and Jewish thought, and one of the leading speakers of the “Arachim” organization. He is based primarily among Jewish communities in the United States — where he is known as “the global lecturer from the USA” — alongside lecture tours across Israel and around the world.\n\nHis teaching is marked by a wealth of authentic information drawn directly from the sources — Bible, Mishnah, Talmud, Midrash and Kabbalah — together with a rational, logical approach that analyzes each subject in depth. His lectures connect the ancient wisdom of the Torah to the questions of our time and to contemporary reality.\n\nOver the years Rabbi Kalazan has delivered hundreds of lectures across a wide range of fields: Torah from Heaven and the human soul, Kabbalah and Jewish mysticism, the weekly Torah portion and the Bible, the reasons behind the commandments and the festivals, the End of Days and the process of redemption, as well as marriage, education and personal development. His lectures are available in video and audio on a variety of platforms. In 5784 (2024) he held a tour of strengthening lectures throughout Israel, including in Ramat Gan, Ashdod, Herzliya, Modiin, Rosh HaAyin, Haifa and Jerusalem.",
     },
-    updatedAt: d("2026-01-01T12:00:00Z"),
+    updatedAt: d("2026-07-07T12:00:00Z"),
   },
   {
     key: "about-vision",
     title: { he: "החזון", en: "The Vision" },
     body: {
-      he: "להנגיש את עומקה של מחשבת ישראל לכל אדם, ולהפוך את תורת ההשקפה למצפן מעשי לחיים.",
-      en: "To make the depth of Jewish thought accessible to everyone, turning a worldview into a practical compass for life.",
+      he: "שאיפתו של הרב קלזאן היא לחזק את התודעה היהודית, לעצור את ההתבוללות התרבותית והמעשית, ולהשיב ליהודים את האמון והגאווה במורשתם — מתוך חשיפת העומק, החכמה והיופי שביהדות. המוטו המלווה את עשייתו: „האזינו, החכימו, והפיצו”.",
+      en: "Rabbi Kalazan’s aspiration is to strengthen Jewish consciousness, to halt cultural and practical assimilation, and to restore to the Jewish people their trust and pride in their heritage — by revealing the depth, wisdom and beauty of Judaism. The motto that accompanies his work: “Listen, learn, and spread the word”.",
     },
-    updatedAt: d("2026-01-01T12:00:00Z"),
+    updatedAt: d("2026-07-07T12:00:00Z"),
   },
   {
     key: "support-intro",

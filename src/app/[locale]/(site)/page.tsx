@@ -46,6 +46,11 @@ export default function HomePage({
         }
       />
 
+      {/* Quote */}
+      <Section tone="parchment" size="md">
+        <Quote>{t("home.quote")}</Quote>
+      </Section>
+
       {/* Highlights */}
       <Section tone="default" size="lg">
         <SectionHeading
@@ -67,11 +72,6 @@ export default function HomePage({
             );
           })}
         </div>
-      </Section>
-
-      {/* Quote */}
-      <Section tone="parchment" size="md">
-        <Quote>{t("home.quote")}</Quote>
       </Section>
     </>
   );

@@ -1,19 +1,18 @@
 "use client";
 
 import { LogIn } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useRouter } from "@/i18n/navigation";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export function LoginForm() {
   const t = useTranslations("admin");
-  const router = useRouter();
+  const locale = useLocale();
   const [loading, setLoading] = useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -22,17 +21,19 @@ export function LoginForm() {
     const form = new FormData(e.currentTarget);
     const supabase = createSupabaseBrowserClient();
     const { error } = await supabase.auth.signInWithPassword({
-      email: String(form.get("email")),
+      email: String(form.get("email")).trim(),
       password: String(form.get("password")),
     });
-    setLoading(false);
 
     if (error) {
+      setLoading(false);
+      console.error("[login] sign-in failed:", error.message);
       toast.error(error.message);
       return;
     }
-    router.push("/admin");
-    router.refresh();
+    // Full navigation so the middleware refreshes the session cookies and the
+    // admin guard sees the fresh session (avoids a bounce back to login).
+    window.location.assign(`/${locale}/admin`);
   }
 
   return (

@@ -47,21 +47,52 @@ export const lectures = pgTable("lectures", {
   publishedAt: timestamp("published_at", { withTimezone: true }).notNull().defaultNow(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+
+  // ── Source / sync fields ───────────────────────────────────────────────────
+  // `sourceVideoId` is the stable external identity (YouTube id). It is what the
+  // daily sync diffs against to know "what already exists here", and it is unique
+  // so re-imports upsert instead of duplicating.
+  sourceVideoId: text("source_video_id").unique(),
+  sourcePlatform: text("source_platform").notNull().default("youtube"),
+  // Stable machine keys for the category / sub-category taxonomy. `topic`/`series`
+  // hold the localized display text; these hold the canonical slug so grouping,
+  // filtering and the sync stay stable even if display text is edited. A lecture
+  // with `categorySlug = null` is "untagged" — the pending-review queue.
+  categorySlug: text("category_slug"),
+  subcategorySlug: text("subcategory_slug"),
+  // `true` while a synced lecture awaits human categorization in the admin panel.
+  needsReview: boolean("needs_review").notNull().default(false),
+  // Full raw payload from the source (YouTube): stats, tags, all thumbnail sizes,
+  // full description, etc. Keeps everything without a column per attribute.
+  metadata: jsonb("metadata").$type<Record<string, unknown>>().notNull().default({}),
 });
 
 // ── Divrei Torah (weekly Torah) ──────────────────────────────────────────────
+// Divrei Torah are short weekly YouTube videos (one per parasha), so they carry
+// the same media/source fields as lectures. `excerpt`/`body` stay for optional
+// written commentary.
 export const divreiTorah = pgTable("divrei_torah", {
   id: uuid("id").primaryKey().defaultRandom(),
   slug: text("slug").notNull().unique(),
   title: localizedCol("title"),
   parasha: localizedCol("parasha"),
+  parashaSlug: text("parasha_slug"),
   excerpt: localizedCol("excerpt"),
   body: localizedCol("body"),
+  contentType: contentTypeEnum("content_type").notNull().default("video"),
+  mediaUrl: text("media_url"),
+  thumbnailUrl: text("thumbnail_url"),
+  durationMinutes: integer("duration_minutes"),
   featured: boolean("featured").notNull().default(false),
   published: boolean("published").notNull().default(true),
   publishedAt: timestamp("published_at", { withTimezone: true }).notNull().defaultNow(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+
+  // ── Source / sync fields (see lectures) ────────────────────────────────────
+  sourceVideoId: text("source_video_id").unique(),
+  sourcePlatform: text("source_platform").notNull().default("youtube"),
+  metadata: jsonb("metadata").$type<Record<string, unknown>>().notNull().default({}),
 });
 
 // ── Events ───────────────────────────────────────────────────────────────────
