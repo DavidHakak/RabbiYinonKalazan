@@ -57,10 +57,6 @@
     "sections": {
       "highlightsTitle": "Highlights",
       "highlightsSubtitle": "Everything on the site, at a glance",
-      "aronTitle": "The Jewish Bookshelf",
-      "aronSubtitle": "Generations of Torah, wisdom and Jewish thought — a living tradition we draw from.",
-      "aronAlt": "Shelves of sacred books in the study hall",
-      "aronCredit": "Photo: YoavN123 · Wikimedia Commons · CC BY-SA 3.0",
       "latestLecturesTitle": "Latest Lectures",
       "latestLecturesSubtitle": "A selection from the lecture library",
       "latestDvarTorahTitle": "Weekly Torah",
@@ -220,6 +216,24 @@
     "save": "Save",
     "cancel": "Cancel",
     "confirmDelete": "Delete this item?",
+    "register": {
+      "title": "Register",
+      "subtitle": "Create a user account",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "submit": "Register",
+      "success": "Account created",
+      "successText": "If email confirmation is required, please check your inbox.",
+      "passwordTooShort": "Password must be at least 8 characters",
+      "passwordMismatch": "Passwords do not match"
+    },
+    "noAccess": {
+      "title": "No access",
+      "text": "Your account is signed in but does not have admin permissions."
+    },
     "newLecture": "New lecture",
     "editLecture": "Edit lecture",
     "backToList": "Back to list",

@@ -2,7 +2,8 @@ import { setRequestLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { NoAccess } from "@/components/admin/no-access";
+import { getSessionUser, isAdminUser } from "@/lib/auth";
 
 export default async function AdminPanelLayout({
   children,
@@ -14,12 +15,10 @@ export default async function AdminPanelLayout({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // Auth guard: no session → login.
-  const supabase = await createSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Auth guard: not signed in → login; signed in but not an admin → no access.
+  const user = await getSessionUser();
   if (!user) redirect(`/${locale}/admin/login`);
+  if (!isAdminUser(user)) return <NoAccess />;
 
   return (
     <div className="flex min-h-dvh flex-col bg-cream-100 md:flex-row">

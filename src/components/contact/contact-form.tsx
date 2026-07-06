@@ -158,8 +158,8 @@ export function ContactForm() {
         disabled={isSubmitting}
         className="w-full sm:w-auto"
       >
-        <Send className="size-4 flip-rtl" />
         {isSubmitting ? t("sending") : t("send")}
+        <Send className="size-4 flip-rtl" />
       </Button>
     </form>
   );

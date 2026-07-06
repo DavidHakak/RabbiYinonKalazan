@@ -256,6 +256,13 @@
   [dir="rtl"] .flip-rtl {
     transform: scaleX(-1);
   }
+
+  /* Mirror only in LTR — used to flip the hero library backdrop so its lamp,
+     which sits on the right of the source photo, always lands on the portrait's
+     outer edge regardless of reading direction. */
+  [dir="ltr"] .flip-ltr {
+    transform: scaleX(-1);
+  }
 }
 
 @layer utilities {
@@ -273,6 +280,43 @@
         color-mix(in oklab, var(--navy-500) 6%, transparent) 0,
         transparent 40%
       );
+  }
+
+  /* Parchment veil over the hero library backdrop — keeps the copy legible on
+     its side while the portrait side stays vivid. On mobile the columns stack,
+     so the light falls from the top (over the heading); from `md` up it hugs the
+     text column's edge, which is the inline-end side in both directions. */
+  .hero-veil {
+    background-image: linear-gradient(
+      to bottom,
+      var(--cream-100) 0%,
+      color-mix(in oklab, var(--cream-100) 82%, transparent) 42%,
+      transparent 74%
+    );
+  }
+
+  @media (min-width: 768px) {
+    /* LTR: text column sits on the right → light hugs the right edge. */
+    .hero-veil {
+      background-image: linear-gradient(
+        to left,
+        var(--cream-100) 0%,
+        var(--cream-100) 16%,
+        color-mix(in oklab, var(--cream-100) 78%, transparent) 46%,
+        transparent 76%
+      );
+    }
+
+    /* RTL: text column sits on the left → light hugs the left edge. */
+    [dir="rtl"] .hero-veil {
+      background-image: linear-gradient(
+        to right,
+        var(--cream-100) 0%,
+        var(--cream-100) 16%,
+        color-mix(in oklab, var(--cream-100) 78%, transparent) 46%,
+        transparent 76%
+      );
+    }
   }
 
   .text-balance {

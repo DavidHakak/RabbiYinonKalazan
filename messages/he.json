@@ -53,14 +53,10 @@
       "ctaSupport": "תמיכה בעבודה שלנו",
       "ctaContact": "צור קשר"
     },
-    "quote": "תורת ההשקפה אינה מותרות רוחנית, אלא מצפן לחיים.",
+    "quote": "גַּל עֵינַי וְאַבִּיטָה נִפְלָאוֹת מִתּוֹרָתֶךָ.",
     "sections": {
       "highlightsTitle": "עיקרי הפעילות",
       "highlightsSubtitle": "כל מה שיש באתר, במבט אחד",
-      "aronTitle": "ארון הספרים היהודי",
-      "aronSubtitle": "דורות של תורה, חכמה ומחשבת ישראל — מסורת חיה שממנה אנו שואבים.",
-      "aronAlt": "מדפי ספרי קודש בבית המדרש",
-      "aronCredit": "צילום: YoavN123 · ויקישיתוף · CC BY-SA 3.0",
       "latestLecturesTitle": "הרצאות אחרונות",
       "latestLecturesSubtitle": "מבחר מתוך מאגר ההרצאות",
       "latestDvarTorahTitle": "דבר תורה לשבת",
@@ -220,6 +216,24 @@
     "save": "שמירה",
     "cancel": "ביטול",
     "confirmDelete": "האם למחוק פריט זה?",
+    "register": {
+      "title": "הרשמה",
+      "subtitle": "יצירת חשבון משתמש",
+      "firstName": "שם פרטי",
+      "lastName": "שם משפחה",
+      "email": "דוא\"ל",
+      "password": "סיסמה",
+      "confirmPassword": "אימות סיסמה",
+      "submit": "הרשמה",
+      "success": "החשבון נוצר",
+      "successText": "אם נדרש אימות דוא\"ל, בדקו את תיבת הדואר שלכם.",
+      "passwordTooShort": "הסיסמה חייבת להכיל לפחות 8 תווים",
+      "passwordMismatch": "הסיסמאות אינן תואמות"
+    },
+    "noAccess": {
+      "title": "אין הרשאת גישה",
+      "text": "החשבון שלך מחובר אך אינו בעל הרשאת ניהול."
+    },
     "newLecture": "הרצאה חדשה",
     "editLecture": "עריכת הרצאה",
     "backToList": "חזרה לרשימה",

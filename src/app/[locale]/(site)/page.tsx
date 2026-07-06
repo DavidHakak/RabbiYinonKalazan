@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
@@ -46,31 +45,6 @@ export default function HomePage({
           </>
         }
       />
-
-      {/* The Jewish bookshelf */}
-      <Section tone="parchment" size="lg">
-        <SectionHeading
-          title={t("home.sections.aronTitle")}
-          subtitle={t("home.sections.aronSubtitle")}
-          className="mb-12"
-        />
-        <figure className="mx-auto w-full max-w-4xl">
-          <div className="relative aspect-1800/456 w-full overflow-hidden rounded-2xl shadow-2xl ring-1 ring-gold-500/25">
-            <Image
-              src="/images/sefarim-shelf.png"
-              alt={t("home.sections.aronAlt")}
-              fill
-              sizes="(max-width: 768px) 92vw, 56rem"
-              className="object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy-950/40 via-transparent to-navy-950/10" />
-            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-navy-950/10" />
-          </div>
-          <figcaption className="mt-3 text-center text-xs text-muted-foreground/70">
-            {t("home.sections.aronCredit")}
-          </figcaption>
-        </figure>
-      </Section>
 
       {/* Highlights */}
       <Section tone="default" size="lg">

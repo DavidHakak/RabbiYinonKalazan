@@ -1,9 +1,9 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Logo } from "@/components/brand/logo";
 import { footerNavKeys, navByKey } from "@/config/navigation";
-import { siteConfig, socialLinks } from "@/config/site";
+import { socialLinks } from "@/config/site";
 import { Link } from "@/i18n/navigation";
 
 /** Public site footer: brand, contact channels, key links and socials. */
@@ -45,25 +45,6 @@ export function SiteFooter() {
               {t("footer.contactTitle")}
             </h2>
             <ul className="space-y-3 text-sm">
-              <li>
-                <a
-                  href={siteConfig.contact.phoneHref}
-                  className="flex items-center gap-3 transition-colors hover:text-gold-400"
-                  dir="ltr"
-                >
-                  <Phone className="size-4 shrink-0 text-gold-500" />
-                  <span>{siteConfig.contact.phone}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="flex items-center gap-3 transition-colors hover:text-gold-400"
-                >
-                  <Mail className="size-4 shrink-0 text-gold-500" />
-                  <span>{siteConfig.contact.email}</span>
-                </a>
-              </li>
               <li className="flex items-center gap-3">
                 <MapPin className="size-4 shrink-0 text-gold-500" />
                 <span>{t("footer.location")}</span>

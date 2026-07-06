@@ -23,9 +23,15 @@ interface HeroProps {
   className?: string;
 }
 
+/** Warm study-hall library that sits behind the rabbi on every portrait hero. */
+const HERO_BACKDROP = "/images/sefarim-shelf.png";
+
 /**
  * The signature banner used on the home page (with CTAs + portrait) and, in its
- * compact `sm` form, as the header of every internal page.
+ * compact `sm` form, as the header of every internal page. When a portrait is
+ * supplied, the sefarim library sits full-bleed behind it — the lamp on the
+ * right of the source photo is mirrored in LTR so it always falls on the
+ * portrait's outer edge.
  */
 export function Hero({
   title,
@@ -46,9 +52,31 @@ export function Hero({
         className,
       )}
     >
+      {hasImage ? (
+        <>
+          <Image
+            src={HERO_BACKDROP}
+            alt=""
+            aria-hidden
+            fill
+            priority={size === "lg"}
+            sizes="100vw"
+            className="flip-ltr object-cover object-center"
+          />
+          <div
+            aria-hidden
+            className="hero-veil pointer-events-none absolute inset-0"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy-950/20 to-transparent"
+          />
+        </>
+      ) : null}
+
       <Container
         className={cn(
-          "grid items-center gap-10",
+          "relative z-10 grid items-center gap-10",
           hasImage ? "md:grid-cols-2" : "md:grid-cols-1",
           size === "lg" ? "py-16 md:py-24" : "py-12 md:py-16",
         )}
@@ -56,7 +84,7 @@ export function Hero({
         <div
           className={cn(
             "flex flex-col gap-6",
-            !hasImage && "items-center text-center",
+            hasImage ? "order-1 md:order-2" : "items-center text-center",
           )}
         >
           {eyebrow ? (
@@ -95,7 +123,7 @@ export function Hero({
         </div>
 
         {image ? (
-          <div className="relative">
+          <div className="relative order-2 md:order-1">
             <div className="relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-2xl shadow-2xl ring-1 ring-gold-500/20 md:max-w-md">
               <Image
                 src={image.src}

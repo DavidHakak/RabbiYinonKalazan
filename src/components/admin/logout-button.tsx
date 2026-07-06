@@ -6,8 +6,9 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { cn } from "@/lib/utils";
 
-export function LogoutButton() {
+export function LogoutButton({ tone = "sidebar" }: { tone?: "sidebar" | "card" }) {
   const t = useTranslations("admin");
   const router = useRouter();
 
@@ -19,10 +20,14 @@ export function LogoutButton() {
 
   return (
     <Button
-      variant="ghost"
+      variant={tone === "card" ? "outline" : "ghost"}
       size="sm"
       onClick={logout}
-      className="w-full justify-start text-cream-100/70 hover:bg-navy-800 hover:text-gold-400"
+      className={cn(
+        tone === "sidebar"
+          ? "w-full justify-start text-cream-100/70 hover:bg-navy-800 hover:text-gold-400"
+          : "w-full",
+      )}
     >
       <LogOut className="size-4 flip-rtl" />
       {t("logout")}

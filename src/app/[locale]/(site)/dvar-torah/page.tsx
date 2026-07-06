@@ -33,7 +33,12 @@ export default async function DvarTorahPage({
 
   return (
     <>
-      <Hero size="sm" title={t("dvarTorah.title")} subtitle={t("dvarTorah.subtitle")} />
+      <Hero
+        size="sm"
+        title={t("dvarTorah.title")}
+        subtitle={t("dvarTorah.subtitle")}
+        image={{ src: "/images/rabbi.png", alt: t("site.name") }}
+      />
       <Section size="lg">
         {items.length === 0 ? (
           <EmptyState title={t("dvarTorah.empty")} />

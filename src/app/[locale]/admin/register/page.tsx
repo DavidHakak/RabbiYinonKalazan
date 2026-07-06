@@ -1,12 +1,15 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { redirect } from "next/navigation";
 
+import { RegisterForm } from "@/components/admin/register-form";
 import { BrandMark } from "@/components/brand/brand-mark";
-import { LoginForm } from "@/components/admin/login-form";
 import type { Locale } from "@/i18n/config";
-import { getSessionUser, isAdminUser } from "@/lib/auth";
 
-export default async function AdminLoginPage({
+/**
+ * Public self-registration — intentionally unlinked (no nav points here).
+ * Accounts created here are regular users (role `user`) with NO admin access;
+ * admin entry is gated separately by `isAdminUser`.
+ */
+export default async function RegisterPage({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
@@ -15,21 +18,17 @@ export default async function AdminLoginPage({
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  // Already signed in as an admin → go straight to the dashboard.
-  const user = await getSessionUser();
-  if (user && isAdminUser(user)) redirect(`/${locale}/admin`);
-
   return (
     <div className="flex min-h-dvh items-center justify-center bg-navy-950 px-4 py-10">
-      <div className="w-full max-w-sm space-y-8 rounded-2xl border border-gold-500/25 bg-card p-8 shadow-2xl">
+      <div className="w-full max-w-md space-y-8 rounded-2xl border border-gold-500/25 bg-card p-8 shadow-2xl">
         <div className="flex flex-col items-center gap-3 text-center">
           <BrandMark className="size-12 text-gold-500" />
           <h1 className="font-serif text-xl font-bold text-navy-900">
-            {t("site.name")}
+            {t("admin.register.title")}
           </h1>
-          <p className="text-sm text-muted-foreground">{t("admin.title")}</p>
+          <p className="text-sm text-muted-foreground">{t("admin.register.subtitle")}</p>
         </div>
-        <LoginForm />
+        <RegisterForm />
       </div>
     </div>
   );
