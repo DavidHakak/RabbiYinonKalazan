@@ -50,9 +50,11 @@ export const lectures = pgTable("lectures", {
 
   // ── Source / sync fields ───────────────────────────────────────────────────
   // `sourceVideoId` is the stable external identity (YouTube id). It is what the
-  // daily sync diffs against to know "what already exists here", and it is unique
-  // so re-imports upsert instead of duplicating.
-  sourceVideoId: text("source_video_id").unique(),
+  // daily sync diffs against to know "what already exists here". It is NOT unique:
+  // one video can appear under several categories (e.g. a lecture listed both in
+  // its topical series and in a dedicated book series), one row per placement.
+  // Placement identity is `slug`; re-imports upsert on that, not on the video id.
+  sourceVideoId: text("source_video_id"),
   sourcePlatform: text("source_platform").notNull().default("youtube"),
   // Stable machine keys for the category / sub-category taxonomy. `topic`/`series`
   // hold the localized display text; these hold the canonical slug so grouping,

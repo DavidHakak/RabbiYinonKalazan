@@ -45,7 +45,15 @@
     "required": "Required",
     "submit": "Submit",
     "sending": "Sending…",
-    "language": "Language"
+    "language": "Language",
+    "sortBy": "Sort",
+    "sort": {
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "longest": "Longest first",
+      "shortest": "Shortest first"
+    },
+    "resultsCount": "{count, plural, =0 {No results} one {1 result} other {# results}}"
   },
   "home": {
     "hero": {
@@ -93,6 +101,7 @@
     "title": "Lectures",
     "subtitle": "Rabbi Yinon Kalazan's lecture library on Jewish philosophy and Jewish thought",
     "searchPlaceholder": "Search lectures…",
+    "allTopics": "All topics",
     "inSeries": "Part of",
     "filters": {
       "topic": "Topic",
@@ -110,7 +119,25 @@
     "title": "Weekly Torah",
     "subtitle": "Torah insights, ideas and reflections for Shabbat",
     "parasha": "Parashat",
+    "searchPlaceholder": "Search by portion or topic…",
+    "allBooks": "All books",
+    "sort": {
+      "parasha": "By Torah order"
+    },
     "empty": "No Torah insights to show yet."
+  },
+  "search": {
+    "open": "Search the site",
+    "title": "Search the site",
+    "placeholder": "Search all content…",
+    "hint": "Search lectures, weekly Torah and events",
+    "empty": "No results found for \"{query}\"",
+    "clear": "Clear",
+    "groups": {
+      "lecture": "Lectures",
+      "dvarTorah": "Weekly Torah",
+      "event": "Events"
+    }
   },
   "events": {
     "title": "Events",

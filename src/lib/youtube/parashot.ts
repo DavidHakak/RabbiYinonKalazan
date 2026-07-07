@@ -13,6 +13,23 @@ export interface Parasha {
   aliases?: string[];
 }
 
+/** The five books of the Torah — used to group weekly portions into categories. */
+export interface Chumash {
+  slug: string;
+  he: string;
+  en: string;
+}
+
+export const CHUMASHIM: Chumash[] = [
+  { slug: "bereshit", he: "בראשית", en: "Genesis" },
+  { slug: "shemot", he: "שמות", en: "Exodus" },
+  { slug: "vayikra", he: "ויקרא", en: "Leviticus" },
+  { slug: "bamidbar", he: "במדבר", en: "Numbers" },
+  { slug: "devarim", he: "דברים", en: "Deuteronomy" },
+];
+
+export const CHUMASH_BY_SLUG = new Map(CHUMASHIM.map((c) => [c.slug, c]));
+
 export const PARASHIOT: Parasha[] = [
   // Bereshit
   { slug: "bereshit", he: "בראשית", en: "Bereshit" },
@@ -53,7 +70,7 @@ export const PARASHIOT: Parasha[] = [
   { slug: "emor", he: "אמור", en: "Emor" },
   { slug: "behar", he: "בהר", en: "Behar" },
   { slug: "bechukotai", he: "בחקתי", en: "Bechukotai", aliases: ["בחוקתי", "בחוקותי"] },
-  { slug: "behar-bechukotai", he: "בהר בחקתי", en: "Behar-Bechukotai", aliases: ["בהר-בחוקתי"] },
+  { slug: "behar-bechukotai", he: "בהר בחקתי", en: "Behar-Bechukotai", aliases: ["בהר בחוקתי", "בהר בחוקותי"] },
   // Bamidbar
   { slug: "bamidbar", he: "במדבר", en: "Bamidbar" },
   { slug: "naso", he: "נשא", en: "Naso" },
@@ -82,24 +99,107 @@ export const PARASHIOT: Parasha[] = [
   { slug: "vezot-haberachah", he: "וזאת הברכה", en: "Vezot Haberachah", aliases: ["וזאת-הברכה"] },
 ];
 
-/** Strip niqqud/gershayim and normalize whitespace for matching. */
+/** Strip niqqud/gershayim, treat hyphens as spaces, normalize whitespace. */
 function normHe(s: string): string {
   return s
     .replace(/[֑-ׇ]/g, "") // niqqud/te'amim
     .replace(/["'׳״]/g, "")
+    .replace(/[-–—]/g, " ") // combined portions: "בהר-בחוקותי" → "בהר בחוקותי"
     .replace(/\s+/g, " ")
     .trim();
 }
 
 const BY_HE = new Map<string, Parasha>();
+/** [normalizedName, parasha] pairs, longest name first — for prefix matching. */
+const NAME_ENTRIES: Array<[string, Parasha]> = [];
 for (const p of PARASHIOT) {
-  BY_HE.set(normHe(p.he), p);
-  for (const a of p.aliases ?? []) BY_HE.set(normHe(a), p);
+  for (const name of [p.he, ...(p.aliases ?? [])]) {
+    const n = normHe(name);
+    BY_HE.set(n, p);
+    NAME_ENTRIES.push([n, p]);
+  }
+}
+NAME_ENTRIES.sort((a, b) => b[0].length - a[0].length);
+
+/**
+ * Strip the noise that real titles append after the parasha name: the author
+ * credit ("- הרב ינון קלזאן") and a Hebrew year ("התשפ״ו" / "תשפ"ה").
+ */
+function stripParashaNoise(text: string): string {
+  return text
+    .replace(/\s*[-–—]\s*(?:ה?רב\b.*)$/u, "") // "- הרב ינון קלזאן ..."
+    .replace(/\s+ה?תש[א-ת]?["'׳״]?[א-ת]?\s*$/u, "") // trailing Hebrew year
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Resolve a parasha from free text: exact match first, then the longest known
+ * parasha name that the text begins with (so "שלח לך התשפו" → Shlach,
+ * "פינחס הרב..." → Pinchas). Tolerant of niqqud/gershayim/spacing.
+ */
+export function matchParasha(text: string): Parasha | null {
+  const n = normHe(stripParashaNoise(text));
+  if (!n) return null;
+  const exact = BY_HE.get(n);
+  if (exact) return exact;
+  for (const [name, p] of NAME_ENTRIES) {
+    if (n === name || n.startsWith(name + " ")) return p;
+  }
+  return null;
 }
 
 /** Look up a parasha by its Hebrew name (tolerant of variants). */
 export function findParashaHe(name: string): Parasha | null {
-  return BY_HE.get(normHe(name)) ?? null;
+  return matchParasha(name);
+}
+
+// Map each parasha slug → its book, derived from the canonical order above by
+// advancing the "current book" pointer at each book's opening portion.
+const BOOK_START_SLUGS = new Set(CHUMASHIM.map((c) => c.slug));
+const PARASHA_BOOK = new Map<string, Chumash>();
+{
+  let current: Chumash = CHUMASHIM[0];
+  for (const p of PARASHIOT) {
+    if (BOOK_START_SLUGS.has(p.slug)) current = CHUMASH_BY_SLUG.get(p.slug)!;
+    PARASHA_BOOK.set(p.slug, current);
+  }
+}
+
+/** The book (chumash) a parasha slug belongs to. */
+export function parashaBook(slug: string | null | undefined): Chumash | null {
+  if (!slug) return null;
+  return PARASHA_BOOK.get(slug) ?? null;
+}
+
+// Canonical reading order: index of each parasha within the yearly cycle.
+const PARASHA_ORDER = new Map(PARASHIOT.map((p, i) => [p.slug, i]));
+
+/**
+ * The reading-order index of a parasha (0 = Bereshit … 53 = Vezot Haberachah),
+ * resolved from its slug or free-text Hebrew name. Returns a large sentinel so
+ * unknown portions sort last.
+ */
+export function parashaOrder(
+  slug: string | null | undefined,
+  name?: string | null,
+): number {
+  const bySlug = slug ? PARASHA_ORDER.get(slug) : undefined;
+  if (bySlug != null) return bySlug;
+  const p = name ? matchParasha(name) : null;
+  const byName = p ? PARASHA_ORDER.get(p.slug) : undefined;
+  return byName ?? 999;
+}
+
+/** Resolve a parasha's book from either its slug or its free-text Hebrew name. */
+export function resolveBook(
+  slug: string | null | undefined,
+  name?: string | null,
+): Chumash | null {
+  const bySlug = parashaBook(slug);
+  if (bySlug) return bySlug;
+  const p = name ? matchParasha(name) : null;
+  return p ? parashaBook(p.slug) : null;
 }
 
 const DVAR_TITLE_RE = /דבר\s*תורה\s*(?:קצר\s*)?(?:ל?פרשת|ל?פרשה)\s+(.+?)\s*$/;
@@ -113,7 +213,6 @@ export function detectDvarTorah(title: string): { parasha: Parasha | null; rawPa
   if (!/דבר\s*תורה/.test(t)) return null;
   const m = DVAR_TITLE_RE.exec(t);
   const raw = m ? m[1] : "";
-  // Drop a trailing Hebrew-year suffix like "התשפ״ו" / "תשפה".
-  const cleaned = raw.replace(/\s*ה?תש[א-ת]?["'׳״]?[א-ת]?\s*$/u, "").trim();
-  return { parasha: findParashaHe(cleaned), rawParasha: cleaned || raw };
+  const cleaned = stripParashaNoise(raw);
+  return { parasha: matchParasha(raw), rawParasha: cleaned || raw };
 }

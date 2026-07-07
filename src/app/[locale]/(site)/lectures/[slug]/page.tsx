@@ -1,23 +1,26 @@
-import { CalendarDays, ChevronRight, Clock, Layers } from "lucide-react";
+import { CalendarDays, Clock, Layers } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { BackButton } from "@/components/common/back-button";
 import { Ornament } from "@/components/common/ornament";
 import { Prose } from "@/components/common/prose";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Button } from "@/components/ui/button";
 import type { Locale } from "@/i18n/config";
-import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format";
 import { localize } from "@/lib/localized";
 import { getYouTubeEmbedUrl } from "@/lib/media";
-import { getLectureBySlug, getLectures } from "@/repositories/lectures";
+import { getLectureBySlug } from "@/repositories/lectures";
+
+// Content is synced daily from YouTube, so detail pages are rendered on demand
+// and cached (ISR) — a newly-synced lecture appears without a rebuild. Its page
+// is generated on first visit, then served from cache and revalidated hourly.
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const lectures = await getLectures();
-  return lectures.map((l) => ({ slug: l.slug }));
+  return [];
 }
 
 export async function generateMetadata({
@@ -111,12 +114,7 @@ export default async function LectureDetailPage({
           <Prose content={localize(lecture.description, locale)} />
 
           <div className="pt-4">
-            <Button asChild variant="ghost" className="text-gold-700 hover:text-gold-800">
-              <Link href="/lectures">
-                <ChevronRight className="size-4 flip-rtl" />
-                {t("lectures.title")}
-              </Link>
-            </Button>
+            <BackButton fallbackHref="/lectures" label={t("lectures.title")} />
           </div>
         </Container>
       </Section>

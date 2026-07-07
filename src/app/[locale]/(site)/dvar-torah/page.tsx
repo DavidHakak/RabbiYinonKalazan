@@ -1,15 +1,22 @@
-import { BookOpen, CalendarDays } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { ContentCard } from "@/components/common/content-card";
 import { EmptyState } from "@/components/common/empty-state";
 import { Hero } from "@/components/common/hero";
+import {
+  DvarTorahBrowser,
+  type DvarTorahView,
+} from "@/components/lectures/dvar-torah-browser";
 import { Section } from "@/components/layout/section";
 import type { Locale } from "@/i18n/config";
 import { formatDate } from "@/lib/format";
 import { localize } from "@/lib/localized";
+import { getYouTubeEmbedUrl } from "@/lib/media";
+import { CHUMASHIM, parashaOrder, resolveBook } from "@/lib/youtube/parashot";
 import { getDivreiTorah } from "@/repositories/divrei-torah";
+
+// Refresh hourly so divrei-torah added by the daily YouTube sync appear on their own.
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -31,44 +38,43 @@ export default async function DvarTorahPage({
   const t = await getTranslations();
   const items = await getDivreiTorah();
 
+  const bookIndex = new Map(CHUMASHIM.map((c, i) => [c.slug, i]));
+
+  const views: DvarTorahView[] = items.map((item) => {
+    const parashaHe = localize(item.parasha, "he");
+    const book = resolveBook(item.parashaSlug, parashaHe);
+    return {
+      id: item.id,
+      slug: item.slug,
+      title: localize(item.title, locale),
+      excerpt: localize(item.excerpt, locale),
+      parasha: localize(item.parasha, locale),
+      bookLabel: book ? localize({ he: book.he, en: book.en }, locale) : "",
+      bookOrder: book ? (bookIndex.get(book.slug) ?? 99) : 99,
+      parashaOrder: parashaOrder(item.parashaSlug, parashaHe),
+      contentType: item.contentType,
+      durationLabel: item.durationMinutes
+        ? `${item.durationMinutes} ${t("common.minutes")}`
+        : "",
+      publishedLabel: formatDate(item.publishedAt, locale),
+      publishedAt: item.publishedAt.toISOString(),
+      mediaUrl: item.mediaUrl,
+      embedUrl: getYouTubeEmbedUrl(item.mediaUrl),
+    };
+  });
+
   return (
     <>
       <Hero
         size="sm"
         title={t("dvarTorah.title")}
         subtitle={t("dvarTorah.subtitle")}
-        image={{ src: "/images/rabbi.png", alt: t("site.name") }}
       />
       <Section size="lg">
-        {items.length === 0 ? (
+        {views.length === 0 ? (
           <EmptyState title={t("dvarTorah.empty")} />
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((item) => (
-              <ContentCard
-                key={item.id}
-                title={localize(item.title, locale)}
-                href={`/dvar-torah/${item.slug}`}
-                excerpt={localize(item.excerpt, locale)}
-                placeholderIcon={BookOpen}
-                badges={[
-                  {
-                    label: `${t("dvarTorah.parasha")} ${localize(item.parasha, locale)}`,
-                    tone: "gold",
-                  },
-                ]}
-                metas={[
-                  { icon: CalendarDays, label: formatDate(item.publishedAt, locale) },
-                ]}
-                action={{
-                  label: t("common.readMore"),
-                  href: `/dvar-torah/${item.slug}`,
-                  icon: BookOpen,
-                  variant: "navy",
-                }}
-              />
-            ))}
-          </div>
+          <DvarTorahBrowser items={views} />
         )}
       </Section>
     </>

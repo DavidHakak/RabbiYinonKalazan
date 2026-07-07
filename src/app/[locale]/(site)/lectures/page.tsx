@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Suspense } from "react";
 
+import { CardGridSkeleton } from "@/components/common/card-grid-skeleton";
 import { Hero } from "@/components/common/hero";
+import { LecturesFilters } from "@/components/lectures/lectures-filters";
+import { LecturesResults } from "@/components/lectures/lectures-results";
 import { Section } from "@/components/layout/section";
-import {
-  LecturesBrowser,
-  type LectureView,
-} from "@/components/lectures/lectures-browser";
+import type { ContentType } from "@/db/schema";
 import type { Locale } from "@/i18n/config";
-import { formatDate } from "@/lib/format";
-import { localize } from "@/lib/localized";
-import { getLectures } from "@/repositories/lectures";
+import type { LectureQuery, LectureSort } from "@/lib/lectures-query";
+import { getLectureFacets } from "@/repositories/lectures";
+
+// Reads searchParams (filters + page) → rendered per request. Each navigation
+// fetches only one page from the DB, so the page never ships the whole table.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -22,31 +26,52 @@ export async function generateMetadata({
   return { title: t("title"), description: t("subtitle") };
 }
 
+type SearchParams = Record<string, string | string[] | undefined>;
+
+function str(value: string | string[] | undefined): string | undefined {
+  const v = Array.isArray(value) ? value[0] : value;
+  return v && v.trim() ? v.trim() : undefined;
+}
+
+const CONTENT_TYPES: ContentType[] = ["video", "audio", "article"];
+const SORTS: LectureSort[] = ["newest", "oldest", "longest", "shortest"];
+
 export default async function LecturesPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: Locale }>;
+  searchParams: Promise<SearchParams>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
-  const lectures = await getLectures();
+  const sp = await searchParams;
 
-  const views: LectureView[] = lectures.map((l) => ({
-    id: l.id,
-    slug: l.slug,
-    title: localize(l.title, locale),
-    description: localize(l.description, locale),
-    topic: localize(l.topic, locale),
-    series: localize(l.series, locale),
-    contentType: l.contentType,
-    typeLabel: t(`lectures.contentTypes.${l.contentType}`),
-    durationLabel: l.durationMinutes
-      ? `${l.durationMinutes} ${t("common.minutes")}`
-      : "",
-    publishedLabel: formatDate(l.publishedAt, locale),
-    mediaUrl: l.mediaUrl,
-  }));
+  const typeParam = str(sp.type);
+  const sortParam = str(sp.sort);
+  const pageNum = Number.parseInt(str(sp.page) ?? "1", 10);
+
+  const query: LectureQuery = {
+    locale,
+    q: str(sp.q),
+    topic: str(sp.topic),
+    series: str(sp.series),
+    type: CONTENT_TYPES.includes(typeParam as ContentType)
+      ? (typeParam as ContentType)
+      : undefined,
+    sort: SORTS.includes(sortParam as LectureSort)
+      ? (sortParam as LectureSort)
+      : "newest",
+    page: Number.isFinite(pageNum) && pageNum > 0 ? pageNum : 1,
+    pageSize: 9,
+  };
+
+  const facets = await getLectureFacets(query);
+
+  // Re-key the Suspense boundary on the query so a filter/page change swaps in
+  // the skeleton while the new page loads.
+  const suspenseKey = JSON.stringify(query);
 
   return (
     <>
@@ -54,10 +79,23 @@ export default async function LecturesPage({
         size="sm"
         title={t("lectures.title")}
         subtitle={t("lectures.subtitle")}
-        image={{ src: "/images/rabbi.png", alt: t("site.name") }}
       />
       <Section size="lg">
-        <LecturesBrowser lectures={views} />
+        <div className="flex flex-col gap-6">
+          <LecturesFilters
+            facets={facets}
+            current={{
+              q: query.q,
+              topic: query.topic,
+              series: query.series,
+              type: query.type,
+              sort: query.sort === "newest" ? undefined : query.sort,
+            }}
+          />
+          <Suspense key={suspenseKey} fallback={<CardGridSkeleton />}>
+            <LecturesResults query={query} locale={locale} />
+          </Suspense>
+        </div>
       </Section>
     </>
   );

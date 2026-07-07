@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 
+import { MediaPlayButton, type MediaSource } from "@/components/common/media-play-button";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -17,11 +18,14 @@ export interface CardMeta {
 
 export interface CardAction {
   label: string;
-  href: string;
+  /** Internal/external link target. Omit when `media` is set (opens a player). */
+  href?: string;
   icon?: LucideIcon;
   variant?: React.ComponentProps<typeof Button>["variant"];
   /** External link (opens in new tab) vs internal locale-aware link. */
   external?: boolean;
+  /** When set, the action opens an in-site media player instead of navigating. */
+  media?: MediaSource;
 }
 
 export interface ContentCardProps {
@@ -45,6 +49,18 @@ const badgeTone: Record<NonNullable<CardBadge["tone"]>, string> = {
 
 function ActionButton({ action }: { action: CardAction }) {
   const Icon = action.icon;
+
+  // Play in-site instead of linking out to YouTube.
+  if (action.media) {
+    return (
+      <MediaPlayButton
+        media={action.media}
+        label={action.label}
+        variant={action.variant ?? "gold"}
+      />
+    );
+  }
+
   const content = (
     <>
       {Icon ? <Icon className="size-4" /> : null}
@@ -53,12 +69,12 @@ function ActionButton({ action }: { action: CardAction }) {
   );
   return (
     <Button asChild variant={action.variant ?? "navy"} size="sm">
-      {action.external ? (
+      {action.external && action.href ? (
         <a href={action.href} target="_blank" rel="noopener noreferrer">
           {content}
         </a>
       ) : (
-        <Link href={action.href}>{content}</Link>
+        <Link href={action.href ?? "#"}>{content}</Link>
       )}
     </Button>
   );
@@ -164,7 +180,7 @@ export function ContentCard({
                     {secondaryAction.label}
                   </a>
                 ) : (
-                  <Link href={secondaryAction.href}>{secondaryAction.label}</Link>
+                  <Link href={secondaryAction.href ?? "#"}>{secondaryAction.label}</Link>
                 )}
               </Button>
             ) : null}

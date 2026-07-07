@@ -39,7 +39,6 @@ export default async function AboutPage({
         size="sm"
         title={t("about.title")}
         subtitle={t("about.subtitle")}
-        image={{ src: "/images/rabbi.png", alt: t("site.name") }}
       />
 
       <Section size="lg">

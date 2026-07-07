@@ -1,22 +1,25 @@
-import { CalendarDays, ChevronRight } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { BackButton } from "@/components/common/back-button";
 import { Ornament } from "@/components/common/ornament";
 import { Prose } from "@/components/common/prose";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Button } from "@/components/ui/button";
 import type { Locale } from "@/i18n/config";
-import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format";
 import { localize } from "@/lib/localized";
-import { getDivreiTorah, getDvarTorahBySlug } from "@/repositories/divrei-torah";
+import { getYouTubeEmbedUrl } from "@/lib/media";
+import { getDvarTorahBySlug } from "@/repositories/divrei-torah";
+
+// Rendered on demand + cached (ISR) so daily-synced divrei-torah appear without
+// a rebuild. See the lectures detail page for the rationale.
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const items = await getDivreiTorah();
-  return items.map((d) => ({ slug: d.slug }));
+  return [];
 }
 
 export async function generateMetadata({
@@ -44,6 +47,8 @@ export default async function DvarTorahDetailPage({
   const item = await getDvarTorahBySlug(slug);
   if (!item) notFound();
 
+  const embedUrl = getYouTubeEmbedUrl(item.mediaUrl);
+
   return (
     <>
       <Section tone="parchment" size="sm">
@@ -64,14 +69,21 @@ export default async function DvarTorahDetailPage({
 
       <Section size="lg">
         <Container className="max-w-3xl space-y-8 px-0">
+          {embedUrl ? (
+            <div className="aspect-video overflow-hidden rounded-2xl shadow-lg ring-1 ring-gold-500/20">
+              <iframe
+                src={embedUrl}
+                title={localize(item.title, locale)}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            </div>
+          ) : null}
+
           <Prose content={localize(item.body, locale)} />
           <div className="pt-2">
-            <Button asChild variant="ghost" className="text-gold-700 hover:text-gold-800">
-              <Link href="/dvar-torah">
-                <ChevronRight className="size-4 flip-rtl" />
-                {t("dvarTorah.title")}
-              </Link>
-            </Button>
+            <BackButton fallbackHref="/dvar-torah" label={t("dvarTorah.title")} />
           </div>
         </Container>
       </Section>

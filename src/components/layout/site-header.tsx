@@ -17,6 +17,7 @@ import { mainNav } from "@/config/navigation";
 
 import { LanguageSwitcher } from "./language-switcher";
 import { NavLink } from "./nav-link";
+import { SiteSearch } from "./site-search";
 
 /** Sticky public site header: brand, primary nav, language switcher, mobile menu. */
 export function SiteHeader() {
@@ -43,7 +44,9 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <SiteSearch tone="light" />
+
           <div className="hidden sm:block">
             <LanguageSwitcher tone="light" />
           </div>

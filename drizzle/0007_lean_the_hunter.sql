@@ -1,0 +1,1 @@
+ALTER TABLE "lectures" DROP CONSTRAINT "lectures_source_video_id_unique";
