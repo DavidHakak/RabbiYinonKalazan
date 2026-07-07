@@ -30,8 +30,21 @@ const noSource = {
   metadata: {},
 } as const;
 
+/** Video/source defaults for demo divrei-torah rows. */
+const dvarVideoDefaults = {
+  parashaSlug: null,
+  contentType: "video",
+  mediaUrl: null,
+  thumbnailUrl: null,
+  durationMinutes: null,
+  sourceVideoId: null,
+  sourcePlatform: "youtube",
+  metadata: {},
+} as const;
+
 export const sampleLectures: Lecture[] = [
   {
+    ...noSource,
     id: "emuna-vetvuna-rambam",
     slug: "emuna-vetvuna-rambam",
     title: { he: "אמונה ותבונה בתורת הרמב\"ם", en: "Faith and Reason in Maimonides" },
@@ -53,6 +66,7 @@ export const sampleLectures: Lecture[] = [
     updatedAt: d("2025-05-12T18:00:00Z"),
   },
   {
+    ...noSource,
     id: "cherut-haadam-rabbi-akiva",
     slug: "cherut-haadam-rabbi-akiva",
     title: { he: "חירות האדם במשנת רבי עקיבא", en: "Human Freedom in the Teaching of Rabbi Akiva" },
@@ -74,6 +88,7 @@ export const sampleLectures: Lecture[] = [
     updatedAt: d("2025-04-28T18:00:00Z"),
   },
   {
+    ...noSource,
     id: "hashgacha-pratit",
     slug: "hashgacha-pratit",
     title: { he: "השגחה פרטית והנהגה אלוקית", en: "Divine Providence and Guidance" },
@@ -95,6 +110,7 @@ export const sampleLectures: Lecture[] = [
     updatedAt: d("2025-04-10T18:00:00Z"),
   },
   {
+    ...noSource,
     id: "musar-umtziut-ramban",
     slug: "musar-umtziut-ramban",
     title: { he: "מוסר ומציאות – גישת הרמב\"ן", en: "Ethics and Reality — the Ramban's Approach" },
@@ -116,6 +132,7 @@ export const sampleLectures: Lecture[] = [
     updatedAt: d("2025-03-22T18:00:00Z"),
   },
   {
+    ...noSource,
     id: "tachlit-haadam-chassidut",
     slug: "tachlit-haadam-chassidut",
     title: { he: "תכלית האדם לפי תורת החסידות", en: "The Purpose of Man in Chassidic Thought" },
@@ -137,6 +154,7 @@ export const sampleLectures: Lecture[] = [
     updatedAt: d("2025-03-08T18:00:00Z"),
   },
   {
+    ...noSource,
     id: "tzelem-elokim",
     slug: "tzelem-elokim",
     title: { he: "צלם אלוקים – כבוד האדם ותכליתו", en: "The Image of God — Human Dignity and Purpose" },
@@ -161,6 +179,7 @@ export const sampleLectures: Lecture[] = [
 
 export const sampleDivreiTorah: DvarTorah[] = [
   {
+    ...dvarVideoDefaults,
     id: "bereshit-reshit",
     slug: "bereshit-reshit",
     title: { he: "בראשית – ההתחלה שבכל יום", en: "Bereshit — The Beginning Within Every Day" },
@@ -180,6 +199,7 @@ export const sampleDivreiTorah: DvarTorah[] = [
     updatedAt: d("2025-10-17T12:00:00Z"),
   },
   {
+    ...dvarVideoDefaults,
     id: "lech-lecha-masa",
     slug: "lech-lecha-masa",
     title: { he: "לך לך – המסע אל העצמי", en: "Lech Lecha — The Journey to the Self" },
@@ -199,6 +219,7 @@ export const sampleDivreiTorah: DvarTorah[] = [
     updatedAt: d("2025-10-31T12:00:00Z"),
   },
   {
+    ...dvarVideoDefaults,
     id: "vayera-hachnasat-orchim",
     slug: "vayera-hachnasat-orchim",
     title: { he: "וירא – גדולה הכנסת אורחים", en: "Vayera — The Greatness of Hospitality" },

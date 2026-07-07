@@ -43,6 +43,13 @@
       "when": 1783371682594,
       "tag": "0005_profile_on_signup",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1783374732343,
+      "tag": "0006_sync_source_fields",
+      "breakpoints": true
     }
   ]
 }

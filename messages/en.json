@@ -236,6 +236,48 @@
     },
     "newLecture": "New lecture",
     "editLecture": "Edit lecture",
+    "events": {
+      "new": "New event",
+      "edit": "Edit event",
+      "fields": {
+        "title": "Title",
+        "description": "Description",
+        "location": "Location",
+        "slug": "URL slug",
+        "startsAt": "Start date & time",
+        "endsAt": "End date & time",
+        "registrationUrl": "Registration link",
+        "imageUrl": "Image URL",
+        "published": "Published"
+      },
+      "errors": {
+        "slugInvalid": "Invalid slug (lowercase letters, numbers and dashes)",
+        "startRequired": "Please enter a start date",
+        "dateInvalid": "Invalid date",
+        "urlInvalid": "Invalid URL",
+        "invalid": "Some fields are invalid."
+      }
+    },
+    "dvarTorah": {
+      "new": "New dvar torah",
+      "edit": "Edit dvar torah",
+      "fields": {
+        "title": "Title",
+        "parasha": "Parasha",
+        "excerpt": "Excerpt",
+        "body": "Body",
+        "slug": "URL slug",
+        "mediaUrl": "Video link (YouTube)",
+        "publishedAt": "Publish date",
+        "featured": "Featured (shown on home)",
+        "published": "Published"
+      },
+      "errors": {
+        "slugInvalid": "Invalid slug",
+        "urlInvalid": "Invalid URL",
+        "invalid": "Some fields are invalid."
+      }
+    },
     "backToList": "Back to list",
     "saved": "Saved successfully",
     "deleted": "Deleted",
